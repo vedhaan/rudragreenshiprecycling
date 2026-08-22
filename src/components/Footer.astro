@@ -1,0 +1,115 @@
+---
+const quickLinks = [
+  { label: 'Home', href: '/' },
+  { label: 'About Rudra', href: '/about' },
+  { label: 'Ship Recycling Process', href: '/process' },
+  { label: 'Investor Relations', href: '/investor-relations' },
+  { label: 'Contact Us', href: '/contact' },
+]
+
+const socials = [
+  { name: 'Facebook', href: 'https://www.facebook.com/rudraglobal',
+    icon: 'M13.5 9H15V6.5h-1.5c-1.93 0-3.5 1.57-3.5 3.5v1.5H8v2.5h2v6.5h2.5V14H15l.5-2.5H12.5V10c0-.55.45-1 1-1z' },
+  { name: 'Twitter', href: 'https://twitter.com/RudraTMX',
+    icon: 'M18.9 6.4c.01.15.01.3.01.46 0 4.68-3.56 10.07-10.07 10.07-2 0-3.86-.58-5.43-1.59.28.03.55.05.84.05 1.66 0 3.19-.56 4.4-1.51-1.55-.03-2.86-1.05-3.31-2.46.22.04.44.06.67.06.32 0 .64-.04.94-.12-1.62-.33-2.84-1.76-2.84-3.48v-.04c.48.27 1.02.43 1.6.45-.95-.63-1.58-1.72-1.58-2.94 0-.65.17-1.25.48-1.77 1.75 2.15 4.37 3.56 7.32 3.71-.06-.26-.09-.53-.09-.81 0-1.96 1.59-3.55 3.55-3.55 1.02 0 1.94.43 2.59 1.12.81-.16 1.56-.45 2.24-.86-.26.82-.82 1.51-1.55 1.94.71-.08 1.39-.28 2.02-.55-.47.7-1.07 1.32-1.76 1.82z' },
+  { name: 'Instagram', href: 'https://www.instagram.com/rudraglobal',
+    icon: 'M12 8.4a3.6 3.6 0 100 7.2 3.6 3.6 0 000-7.2zm0 5.94a2.34 2.34 0 110-4.68 2.34 2.34 0 010 4.68zm4.59-6.09a.84.84 0 11-1.68 0 .84.84 0 011.68 0zM20 7.2c-.05-1.1-.3-2.07-1.1-2.87-.8-.8-1.77-1.05-2.87-1.1-1.13-.06-4.51-.06-5.64 0-1.1.05-2.06.3-2.87 1.1-.8.8-1.04 1.77-1.1 2.87-.06 1.13-.06 4.51 0 5.64.05 1.1.3 2.07 1.1 2.87.81.8 1.77 1.05 2.87 1.1 1.13.06 4.51.06 5.64 0 1.1-.05 2.07-.3 2.87-1.1.8-.8 1.05-1.77 1.1-2.87.06-1.13.06-4.5 0-5.64zM18.4 14c-.12 1.11-.36 2.32-1.18 3.15-.83.83-2.04 1.07-3.15 1.18-1.23.06-4.9.06-6.13 0-1.11-.12-2.32-.36-3.15-1.18-.83-.83-1.07-2.04-1.18-3.15-.06-1.23-.06-4.9 0-6.13.12-1.11.36-2.32 1.18-3.15.83-.83 2.04-1.07 3.15-1.18 1.23-.06 4.9-.06 6.13 0 1.11.12 2.32.36 3.15 1.18.83.83 1.07 2.04 1.18 3.15.06 1.23.06 4.9 0 6.13z' },
+]
+
+const compliance = [
+  { label: 'CIN', value: null },
+  { label: 'Reg. Office', value: 'Alang, Bhavnagar, Gujarat', flag: 'confirm' },
+  { label: 'Phone', value: null },
+  { label: 'Email', value: 'works@rudragreenshiprecycling.com', href: 'mailto:works@rudragreenshiprecycling.com' },
+  { label: 'Grievance', value: 'investors@rudragreenshiprecycling.com', href: 'mailto:investors@rudragreenshiprecycling.com', flag: 'confirm' },
+]
+---
+
+<footer class="relative bg-stone-200 border-t border-stone-400/40 overflow-hidden">
+  <div class="hidden xl:block absolute inset-0 opacity-[0.035] pointer-events-none"
+    style="background-image: linear-gradient(#0E2142 1px, transparent 1px), linear-gradient(90deg, #0E2142 1px, transparent 1px); background-size: 64px 64px;">
+  </div>
+
+  <div class="relative max-w-[1800px] mx-auto px-6 sm:px-10 xl:px-16 2xl:px-20 py-16 lg:py-20">
+      <div class="grid lg:grid-cols-[1fr_0.7fr_1.15fr] gap-12 lg:gap-16">
+
+        <!-- 1. Identity -->
+        <div>
+          <img src="/img/logo.png" alt="Rudra Green Ship Recycling" class="h-9 w-auto mb-6" />
+          <p class="eyebrow text-rust-500 mb-5">Rudra Green Ship Recycling</p>
+          <p class="text-sm text-stone-700 leading-relaxed max-w-sm">
+            A subsidiary of Rudra Global, operating an HKC-compliant green ship recycling yard
+            at Alang, Gujarat. Part of a group spanning ship recycling, TMT bars, cement, and
+            industrial pipes since 1991.
+          </p>
+        </div>
+
+      <!-- 2. Quick Links -->
+      <div>
+        <p class="eyebrow text-rust-500 mb-6">Quick Links</p>
+        <ul class="space-y-3 text-sm">
+          {quickLinks.map((link) => (
+            <li>
+              <a href={link.href} class="inline-flex items-center gap-1.5 text-navy-800 hover:text-rust-600 transition-colors group">
+                {link.label}
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" class="opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200">
+                  <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- 3. Registered Office & Compliance — nameplate card -->
+      <div>
+        <p class="eyebrow text-rust-500 mb-6">Registered Office & Compliance</p>
+
+        <div class="relative bg-white border border-stone-300 rounded-sm p-6">
+          <!-- corner rivets, industrial motif -->
+          <span class="absolute top-2.5 left-2.5 w-1.5 h-1.5 rounded-full bg-stone-300"></span>
+          <span class="absolute top-2.5 right-2.5 w-1.5 h-1.5 rounded-full bg-stone-300"></span>
+          <span class="absolute bottom-2.5 left-2.5 w-1.5 h-1.5 rounded-full bg-stone-300"></span>
+          <span class="absolute bottom-2.5 right-2.5 w-1.5 h-1.5 rounded-full bg-stone-300"></span>
+
+          <dl class="text-sm">
+            {compliance.map((c, i) => (
+              <div class:list={['flex items-center justify-between gap-4 py-2.5', i !== 0 && 'border-t border-dashed border-stone-300']}>
+                <dt class="font-mono text-[11px] tracking-wide text-stone-500 shrink-0">{c.label}</dt>
+                {c.value ? (
+                  <dd class="flex items-center gap-2 flex-wrap justify-end">
+                    {c.href ? (
+                      <a href={c.href} class="font-semibold text-navy-950 hover:text-rust-600 transition-colors text-right">{c.value}</a>
+                    ) : (
+                      <span class="font-semibold text-navy-950 text-right">{c.value}</span>
+                    )}
+                    {c.flag && (
+                      <span class="eyebrow text-rust-500 bg-rust-500/10 border border-rust-500/25 px-2 py-0.5 rounded-full">{c.flag}</span>
+                    )}
+                  </dd>
+                ) : (
+                  <dd class="flex items-center gap-2">
+                    <span class="text-stone-400">—</span>
+                    <span class="eyebrow text-rust-500 bg-rust-500/10 border border-rust-500/25 px-2 py-0.5 rounded-full">provide</span>
+                  </dd>
+                )}
+              </div>
+            ))}
+          </dl>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-14 pt-6 border-t border-stone-300 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="font-mono text-xs text-stone-500 order-2 sm:order-1">© 2026 Rudra Green Ship Recycling. All rights reserved.</p>
+      <div class="flex items-center gap-3 order-1 sm:order-2">
+        {socials.map((s) => (
+          <a href={s.href} aria-label={s.name} target="_blank" rel="noopener"
+            class="w-9 h-9 flex items-center justify-center rounded-full border border-stone-300 text-stone-500 hover:text-white hover:bg-rust-500 hover:border-rust-500 transition-all duration-200">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d={s.icon}/></svg>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</footer>

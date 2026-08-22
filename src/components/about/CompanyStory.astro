@@ -1,0 +1,108 @@
+---
+const stages = [
+  {
+    tag: 'Origin',
+    title: 'A steel re-rolling mill',
+    desc: 'Rudra Global begins operations in Bhavnagar with a 1000 MT/month steel re-rolling mill — the foundation the group still builds on.',
+    marker: '1991',
+  },
+  {
+    tag: 'Expansion',
+    title: 'A diversified industrial group',
+    desc: 'Operations grow beyond steel into construction cement, ACC blocks, and industrial pipes — building the group structure that exists today.',
+    marker: null,
+  },
+  {
+    tag: 'Today',
+    title: 'Green ship recycling at Alang',
+    desc: 'Rudra Green Ship Recycling Group carries that foundation into Alang — an HKC-compliant yard built to the same standard of process discipline.',
+    marker: 'Now',
+  },
+]
+---
+
+<section id="story" class="relative bg-paper overflow-hidden py-24 lg:py-36">
+  <div class="hidden xl:block absolute inset-0 opacity-[0.035] pointer-events-none"
+    style="background-image: linear-gradient(#0E2142 1px, transparent 1px), linear-gradient(90deg, #0E2142 1px, transparent 1px); background-size: 64px 64px;">
+  </div>
+
+  <div class="relative max-w-[1800px] mx-auto px-6 sm:px-10 xl:px-16 2xl:px-20">
+    <div class="grid lg:grid-cols-[0.55fr_1fr] gap-12 lg:gap-16 items-end mb-20 lg:mb-28">
+      <div>
+        <div class="flex items-center gap-3 mb-5">
+          <span class="w-8 h-px bg-sage-600"></span>
+          <p class="eyebrow text-sage-600">Where it started</p>
+        </div>
+        <h2 class="font-display font-semibold text-3xl lg:text-4xl xl:text-[2.75rem] text-navy-950 leading-[1.1]">
+          A journey built one plate at a time.
+        </h2>
+      </div>
+      <p class="text-stone-600 text-base lg:text-lg leading-relaxed max-w-xl">
+        From a single steel re-rolling mill to a diversified industrial group — the same
+        process discipline that started in 1991 now runs through every yard operation
+        at Alang.
+      </p>
+    </div>
+
+    <!-- ============ DESKTOP: horizontal stepper (self-contained) ============ -->
+    <div class="hidden lg:block relative">
+      <div class="absolute top-7 left-7 right-7 h-px bg-stone-300 z-0"></div>
+
+      <div class="grid grid-cols-3 gap-8 xl:gap-10">
+        {stages.map((s, i) => (
+          <div class="relative z-10 flex flex-col items-center">
+            <span class:list={[
+              'flex items-center justify-center w-14 h-14 rounded-full border-2 bg-white shrink-0',
+              i === stages.length - 1 ? 'border-rust-500' : 'border-navy-900',
+            ]}>
+              <span class="font-mono text-sm font-semibold text-navy-900">{String(i + 1).padStart(2, '0')}</span>
+            </span>
+
+            <span class="w-px h-8 bg-stone-300"></span>
+
+            <div class="w-full bg-white border border-stone-200 p-6 xl:p-8 transition-shadow duration-300
+                        shadow-[0_1px_2px_rgba(14,33,66,0.04),0_14px_28px_-10px_rgba(14,33,66,0.14)]
+                        hover:shadow-[0_1px_2px_rgba(14,33,66,0.05),0_20px_40px_-10px_rgba(14,33,66,0.20)]
+                        hover:-translate-y-1">
+              <div class="flex items-center justify-between gap-3 mb-4">
+                <span class="eyebrow text-rust-500">{s.tag}</span>
+                {s.marker && (
+                  <span class="font-display font-semibold text-xl text-navy-950">{s.marker}</span>
+                )}
+              </div>
+              <h3 class="font-display font-semibold text-xl xl:text-2xl text-navy-950 mb-3">{s.title}</h3>
+              <p class="text-stone-600 text-sm leading-relaxed">{s.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- ============ MOBILE/TABLET: vertical stepper (self-contained) ============ -->
+    <div class="lg:hidden max-w-2xl">
+      <div class="relative pl-10 border-l-2 border-stone-300">
+        {stages.map((s, i) => (
+          <div class="relative pb-14 last:pb-0">
+            <span class:list={[
+              'absolute -left-[calc(2.5rem+7px)] top-0 flex items-center justify-center w-11 h-11 rounded-full bg-white border-2 shrink-0',
+              i === stages.length - 1 ? 'border-rust-500' : 'border-navy-900',
+            ]}>
+              <span class="font-mono text-xs font-semibold text-navy-900">{String(i + 1).padStart(2, '0')}</span>
+            </span>
+
+            <div class="bg-white border border-stone-200 p-6 shadow-[0_1px_2px_rgba(14,33,66,0.04),0_12px_24px_-10px_rgba(14,33,66,0.14)]">
+              <div class="flex items-center justify-between gap-3 mb-4">
+                <span class="eyebrow text-rust-500">{s.tag}</span>
+                {s.marker && (
+                  <span class="font-display font-semibold text-lg text-navy-950">{s.marker}</span>
+                )}
+              </div>
+              <h3 class="font-display font-semibold text-xl text-navy-950 mb-3">{s.title}</h3>
+              <p class="text-stone-600 text-sm leading-relaxed">{s.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,61 @@
+---
+const milestones = [
+  { year: '1991', title: 'Group founded', desc: 'Rudra Global begins operations in Bhavnagar with a 1000 MT/month steel re-rolling mill.' },
+]
+---
+
+<section class="relative bg-paper py-24 lg:py-32 overflow-hidden">
+  <div class="hidden xl:block absolute inset-0 opacity-[0.03] pointer-events-none"
+    style="background-image: linear-gradient(#0E2142 1px, transparent 1px), linear-gradient(90deg, #0E2142 1px, transparent 1px); background-size: 64px 64px;">
+  </div>
+
+  <div class="relative max-w-[1800px] mx-auto px-6 sm:px-10 xl:px-16 2xl:px-20">
+    <div class="grid lg:grid-cols-[0.55fr_1fr] gap-12 lg:gap-16 items-end mb-16 lg:mb-20">
+      <div>
+        <div class="flex items-center gap-3 mb-5">
+          <span class="w-8 h-px bg-rust-500"></span>
+          <p class="eyebrow text-rust-500">Milestones</p>
+        </div>
+        <h2 class="font-display font-semibold text-3xl lg:text-4xl xl:text-[2.75rem] text-navy-950 leading-[1.1]">
+          A record, kept as it grows.
+        </h2>
+      </div>
+      <p class="text-stone-600 text-base lg:text-lg leading-relaxed max-w-xl">
+        Key dates in the group's history, maintained as an ongoing register rather than
+        a fixed narrative — updated as new milestones are confirmed.
+      </p>
+    </div>
+
+    <div class="max-w-4xl border-t border-stone-300">
+
+      {milestones.map((m, i) => (
+        <div class="group flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-8 py-8 border-b border-stone-300 transition-colors hover:bg-white/60 px-3 -mx-3">
+          <span class="font-mono text-xs text-stone-400 w-10 shrink-0">{String(i + 1).padStart(2, '0')}</span>
+          <span class="font-display font-semibold text-2xl xl:text-3xl text-navy-950 w-full sm:w-32 shrink-0">{m.year}</span>
+          <div class="flex-1 min-w-0">
+            <p class="font-medium text-navy-900 mb-1.5">{m.title}</p>
+            <p class="text-stone-600 text-sm leading-relaxed max-w-xl">{m.desc}</p>
+          </div>
+        </div>
+      ))}
+
+      <!-- open register rows: honest placeholders, not fabricated history -->
+      {[1, 2, 3].map(() => (
+        <div class="flex items-center gap-8 py-6 border-b border-stone-300 border-dashed px-3 -mx-3">
+          <span class="font-mono text-xs text-stone-300 w-10 shrink-0">—</span>
+          <span class="font-display font-semibold text-2xl xl:text-3xl text-stone-300 w-full sm:w-32 shrink-0">—</span>
+          <div class="flex-1 flex items-center gap-3">
+            <span class="text-stone-400 text-sm">Awaiting confirmation from client</span>
+            <span class="eyebrow text-rust-500 bg-rust-500/10 border border-rust-500/25 px-2 py-0.5 rounded-full shrink-0">pending</span>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <p class="max-w-4xl mt-6 text-xs text-stone-500 leading-relaxed">
+      Candidates worth confirming for this register: HKC compliance date, ISO/OHSAS
+      certification dates, the year ship recycling operations began at Alang, and the
+      years the cement, ACC blocks, and industrial pipes verticals launched.
+    </p>
+  </div>
+</section>

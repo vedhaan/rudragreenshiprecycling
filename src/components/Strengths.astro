@@ -1,0 +1,91 @@
+---
+const items = [
+  {
+    tag: '01',
+    title: 'State of the Art Yard',
+    body: 'Purpose-built facilities including waste management rooms, bilge waste collection tanks, and dedicated cutting zones — with a separate zone for oil material handling.',
+    href: '/about#state',
+    img: '/img/strength/yard.jpg',
+  },
+  {
+    tag: '02',
+    title: 'Health Measures',
+    body: 'Ship breaking involves phases that can affect worker health. Our processes are designed at every stage so no worker is exposed to unnecessary risk.',
+    href: '/measures#health',
+    img: '/img/strength/yard.jpg',
+  },
+  {
+    tag: '03',
+    title: 'Environment & Safety',
+    body: 'Every applicable environmental and safety standard is followed, with precautions taken to preserve sterility and maintain international compliance.',
+    href: '/measures#envior',
+    img: '/img/strength/yard.jpg',
+  },
+  {
+    tag: '04',
+    title: 'Waste Management',
+    body: 'Ships carry hazardous material by necessity at sea. We ensure that same material is disposed of correctly on land, without impact to people or environment.',
+    href: '/measures#waste',
+    img: '/img/strength/yard.jpg',
+  },
+]
+---
+
+<section class="relative py-24 lg:py-32 overflow-hidden">
+  <div class="hidden xl:block absolute inset-0 opacity-[0.4] pointer-events-none"
+    style="background-image: radial-gradient(#0E2142 1px, transparent 1px); background-size: 28px 28px; mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 0%, transparent 70%); opacity: 0.035;">
+  </div>
+
+  <div class="relative max-w-[1800px] mx-auto px-6 sm:px-10 xl:px-16 2xl:px-20">
+    <div class="flex items-end justify-between mb-14 lg:mb-20 flex-wrap gap-4">
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="w-8 h-px bg-rust-500"></span>
+          <p class="eyebrow text-sage-600">What sets us apart</p>
+        </div>
+        <h2 class="font-display font-semibold text-3xl lg:text-4xl xl:text-5xl text-navy-950">Our Strength</h2>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 xl:gap-9">
+      {items.map((item) => (
+        <a
+          href={item.href}
+          class="group relative flex flex-col bg-white border border-stone-200 overflow-hidden transition-all duration-300 ease-out
+                 hover:-translate-y-1.5 hover:shadow-[0_4px_10px_rgba(14,33,66,0.06),0_20px_40px_rgba(14,33,66,0.11)]
+                 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rust-500 focus-visible:ring-offset-2 focus-visible:ring-offset-paper"
+        >
+          <div class="relative aspect-[4/3] xl:aspect-[4/3.4] overflow-hidden bg-stone-200">
+            <img
+              src={item.img}
+              alt={item.title}
+              class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-navy-950/50 via-navy-950/0 to-navy-950/0"></div>
+
+            <span class="absolute top-4 left-4 flex items-center gap-1.5 font-mono text-xs tracking-widest text-white bg-white/15 backdrop-blur-md border border-white/25 px-2.5 py-1 transition-colors duration-300 group-hover:bg-rust-500/90 group-hover:border-rust-500">
+              {item.tag}
+            </span>
+          </div>
+
+          <div class="flex flex-col flex-1 p-7 xl:p-9">
+            <h3 class="font-display font-semibold text-xl xl:text-[1.4rem] text-navy-950 mb-3 transition-colors group-hover:text-rust-600">
+              {item.title}
+            </h3>
+            <p class="text-stone-600 text-sm xl:text-[0.95rem] leading-relaxed flex-1">{item.body}</p>
+
+            <span class="inline-flex items-center gap-1.5 mt-6 text-sm font-medium text-navy-900">
+              Read more
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="transition-transform duration-300 group-hover:translate-x-1.5">
+                <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </div>
+
+          <span class="absolute left-0 bottom-0 h-0.5 w-0 bg-rust-500 transition-all duration-300 ease-out group-hover:w-full"></span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

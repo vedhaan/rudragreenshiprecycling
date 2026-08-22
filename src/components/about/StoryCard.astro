@@ -1,0 +1,17 @@
+---
+interface Props {
+  stage: { tag: string; title: string; desc: string; marker: string | null }
+  align: 'left' | 'right'
+}
+const { stage, align } = Astro.props
+---
+<div class:list={['bg-white border border-stone-200 p-6 xl:p-7', align === 'right' && 'lg:ml-auto lg:max-w-md']}>
+  <div class="flex items-center justify-between gap-3 mb-4">
+    <span class="eyebrow text-rust-500">{stage.tag}</span>
+    {stage.marker && (
+      <span class="font-display font-semibold text-lg text-navy-950">{stage.marker}</span>
+    )}
+  </div>
+  <h3 class="font-display font-semibold text-xl text-navy-950 mb-3">{stage.title}</h3>
+  <p class="text-stone-600 text-sm leading-relaxed">{stage.desc}</p>
+</div>

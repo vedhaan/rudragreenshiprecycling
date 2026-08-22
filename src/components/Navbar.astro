@@ -1,0 +1,98 @@
+---
+const navLinks = [
+  { label: 'Home', href: '/' },
+  { label: 'About Rudra', href: '/about' },
+  {
+    label: 'Green Ship Recycling',
+    href: '#',
+    children: [
+      { label: 'Process', href: '/process' },
+      { label: 'Measures', href: '/measures' },
+      { label: 'Hong Kong Convention', href: '/convention' },
+      { label: 'Green Ship Recycling', href: '/green-ship-recycling' },
+    ],
+  },
+  { label: 'About Alang', href: '/about-alang' },
+  { label: 'Media', href: '/media' },
+]
+---
+<header class="sticky top-0 z-50 bg-paper/95 backdrop-blur border-b border-stone-200">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-20">
+    <a href="/" class="flex items-center gap-2 shrink-0">
+      <img src="/img/logo.png" alt="Rudra Green Ship Recycling" class="h-9 sm:h-10 w-auto" />
+    </a>
+
+    <nav class="hidden lg:flex items-center gap-8 font-body text-sm font-medium text-navy-900">
+      {navLinks.map((link) => (
+        link.children ? (
+          <div class="relative group">
+            <button class="flex items-center gap-1 py-8 hover:text-rust-600 transition-colors">
+              {link.label}
+              <svg width="10" height="6" viewBox="0 0 10 6" class="mt-0.5 transition-transform group-hover:rotate-180">
+                <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+              </svg>
+            </button>
+            <div class="absolute left-0 top-full w-56 bg-white border border-stone-200 shadow-xl shadow-navy-950/5 opacity-0 invisible translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-200">
+              {link.children.map((child) => (
+                <a href={child.href} class="block px-5 py-3 text-navy-800 hover:bg-paper hover:text-rust-600 border-b border-stone-200 last:border-0">
+                  {child.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        ) : (
+          <a href={link.href} class="py-8 hover:text-rust-600 transition-colors">{link.label}</a>
+        )
+      ))}
+
+      <a href="/investor-relations" class="flex items-center gap-1.5 border border-navy-900 px-3.5 py-2 hover:bg-navy-900 hover:text-white transition-colors">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M3 3v18h18M7 15l4-5 3 3 5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="eyebrow">Investor Relations</span>
+      </a>
+
+      <a href="/contact" class="bg-rust-500 text-white px-5 py-2.5 hover:bg-rust-600 transition-colors">Contact Us</a>
+    </nav>
+
+    <button id="mobile-menu-btn" class="lg:hidden text-navy-900" aria-label="Toggle menu" aria-expanded="false">
+      <svg id="menu-icon" width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <svg id="close-icon" class="hidden" width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+
+  <div id="mobile-menu" class="hidden lg:hidden border-t border-stone-200 bg-paper px-6 py-6">
+    {navLinks.map((link) => (
+      link.children ? (
+        <details class="group">
+          <summary class="py-3 font-medium text-navy-900 cursor-pointer list-none flex items-center justify-between">
+            {link.label}
+            <svg width="10" height="6" viewBox="0 0 10 6" class="transition-transform group-open:rotate-180"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+          </summary>
+          <div class="pl-4 pb-2 space-y-1">
+            {link.children.map((child) => (
+              <a href={child.href} class="block py-2 text-stone-600">{child.label}</a>
+            ))}
+          </div>
+        </details>
+      ) : (
+        <a href={link.href} class="block py-3 font-medium text-navy-900 border-b border-stone-200">{link.label}</a>
+      )
+    ))}
+    <a href="/investor-relations" class="block py-3 font-medium text-navy-900 border-b border-stone-200">Investor Relations</a>
+    <a href="/contact" class="block mt-4 bg-rust-500 text-white text-center px-5 py-3">Contact Us</a>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn')
+  const menu = document.getElementById('mobile-menu')
+  const menuIcon = document.getElementById('menu-icon')
+  const closeIcon = document.getElementById('close-icon')
+
+  btn?.addEventListener('click', () => {
+    const isOpen = !menu?.classList.contains('hidden')
+    menu?.classList.toggle('hidden')
+    menuIcon?.classList.toggle('hidden')
+    closeIcon?.classList.toggle('hidden')
+    btn.setAttribute('aria-expanded', String(!isOpen))
+  })
+</script>
