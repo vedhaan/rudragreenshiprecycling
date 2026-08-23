@@ -32,6 +32,10 @@ body {
   font-family: var(--font-body);
 }
 
+h1, h2, h3, p, dd, dt {
+  overflow-wrap: break-word;
+}
+
 .eyebrow {
   font-family: var(--font-mono);
   letter-spacing: 0.12em;
