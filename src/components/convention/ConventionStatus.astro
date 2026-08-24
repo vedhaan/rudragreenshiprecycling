@@ -1,0 +1,70 @@
+---
+const status = [
+  { label: 'Convention', value: 'Hong Kong International Convention, 2009', confirmed: true },
+  { label: 'Governing body', value: 'International Maritime Organization (IMO)', confirmed: true },
+  { label: 'Yard compliance status', value: null, confirmed: false },
+  { label: 'Certifying body', value: null, confirmed: false },
+  { label: 'Certificate reference', value: null, confirmed: false },
+]
+const confirmedCount = status.filter((s) => s.confirmed).length
+---
+
+<section class="relative bg-white border-y border-stone-200 py-20 lg:py-28 overflow-hidden">
+  <div class="max-w-[1800px] mx-auto px-6 sm:px-10 xl:px-16 2xl:px-20">
+    <div class="grid lg:grid-cols-[1fr_1fr] gap-12 xl:gap-20 items-start">
+      <div>
+        <div class="flex items-center gap-3 mb-5">
+          <span class="w-8 h-px bg-rust-500 shrink-0"></span>
+          <p class="eyebrow text-rust-500">Our status</p>
+        </div>
+        <h2 class="font-display font-semibold text-3xl lg:text-4xl text-navy-950 leading-[1.1] mb-6">
+          Operating in compliance.
+        </h2>
+        <p class="text-stone-600 text-base leading-relaxed max-w-md mb-8">
+          Rudra Green Ship Recycling Group's Alang facility is built and operated to align
+          with Hong Kong Convention requirements, alongside applicable ISO and pollution
+          control standards.
+        </p>
+
+        <!-- confirmation progress -->
+        <div class="max-w-xs">
+          <div class="flex items-center justify-between mb-2">
+            <span class="eyebrow text-stone-500">Fields confirmed</span>
+            <span class="font-mono text-xs text-navy-900 font-semibold">{confirmedCount} / {status.length}</span>
+          </div>
+          <div class="h-1.5 bg-stone-200 rounded-full overflow-hidden">
+            <div class="h-full bg-sage-600 rounded-full" style={`width: ${(confirmedCount / status.length) * 100}%`}></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="relative bg-paper border border-stone-300 p-2">
+        <dl>
+          {status.map((s) => (
+            <div class:list={['flex items-center gap-4 px-4 py-4 border-b border-stone-200 last:border-b-0']}>
+              <span class:list={[
+                'flex items-center justify-center w-8 h-8 rounded-full border shrink-0',
+                s.confirmed ? 'border-sage-600/40 bg-sage-600/10' : 'border-amber-500/40 bg-amber-500/10',
+              ]}>
+                {s.confirmed ? (
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-sage-600"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                ) : (
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-amber-600"><path d="M12 9v4m0 4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                )}
+              </span>
+
+              <div class="flex-1 min-w-0">
+                <dt class="font-mono text-[11px] text-stone-500 mb-0.5">{s.label}</dt>
+                {s.value ? (
+                  <dd class="font-semibold text-navy-950 text-sm break-words">{s.value}</dd>
+                ) : (
+                  <dd class="text-amber-600 text-sm font-medium">Pending from client</dd>
+                )}
+              </div>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>

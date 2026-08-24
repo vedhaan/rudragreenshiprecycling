@@ -1,0 +1,89 @@
+---
+const facts = [
+  { label: 'District', value: 'Bhavnagar, Gujarat', icon: 'M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z M12 12a3 3 0 100-6 3 3 0 000 6z' },
+  { label: 'Coastline', value: 'Gulf of Khambhat', icon: 'M2 12h20M2 12a10 10 0 0110-10M2 12a10 10 0 0010 10M12 2a15 15 0 010 20M12 2a15 15 0 000 20' },
+  { label: 'Known as', value: "World's largest ship recycling hub", icon: 'M3 21h18M5 21V10l7-7 7 7v11M9 21v-6h6v6' },
+  { label: 'Method', value: 'Tidal beaching', icon: 'M3 15c2 1.5 4 1.5 6 0s4-1.5 6 0 4 1.5 6 0M3 19c2 1.5 4 1.5 6 0s4-1.5 6 0 4 1.5 6 0M5 11V4l14-1v8' },
+]
+---
+
+<section class="relative bg-paper py-4 lg:py-8 overflow-hidden">
+  <div class="max-w-[1800px] mx-auto px-6 sm:px-10 xl:px-16 2xl:px-20">
+    <div class="grid lg:grid-cols-[1fr_0.9fr] gap-16 xl:gap-24 items-start">
+
+      <div>
+        <p class="eyebrow text-sage-600 mb-5">Why Alang</p>
+        <h2 class="font-display font-semibold text-3xl lg:text-4xl xl:text-[2.75rem] text-navy-950 leading-[1.1] mb-8">
+          A coastline built by geography for this work.
+        </h2>
+        <div class="space-y-5 text-stone-600 text-base leading-relaxed max-w-xl mb-12">
+          <p>
+            Alang sits on the Gulf of Khambhat in Bhavnagar district, Gujarat — a stretch of
+            coastline with one of the highest tidal ranges in the world. That range is what
+            makes the location viable for ship recycling at scale: vessels can be beached at
+            high tide and worked on exposed ground as the water recedes.
+          </p>
+          <p>
+            That natural advantage is why Alang has grown into the world's largest ship
+            recycling hub — and why Rudra Green Ship Recycling operates here rather than
+            at a conventional dry-dock facility.
+          </p>
+        </div>
+
+        <!-- fact cards, not bare text -->
+        <div class="grid sm:grid-cols-2 gap-4 max-w-xl">
+          {facts.map((f) => (
+            <div class="flex items-start gap-4 bg-white border border-stone-200 p-5">
+              <span class="flex items-center justify-center w-10 h-10 rounded-full border border-sage-600/30 bg-sage-600/[0.06] shrink-0">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="text-sage-600">
+                  <path d={f.icon} stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <div class="min-w-0">
+                <p class="font-mono text-[10px] tracking-wide text-stone-400 mb-1">{f.label}</p>
+                <p class="font-semibold text-navy-950 text-sm leading-snug">{f.value}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- TIDAL DIAGRAM -->
+      <div class="relative bg-white border border-stone-300 p-6 lg:p-8 shadow-[0_1px_2px_rgba(14,33,66,0.04),0_20px_40px_-16px_rgba(14,33,66,0.14)] lg:max-w-md xl:max-w-lg mx-auto lg:mx-0">
+        <span class="absolute top-2.5 left-2.5 w-4 h-4 border-t-2 border-l-2 border-stone-300"></span>
+        <span class="absolute top-2.5 right-2.5 w-4 h-4 border-t-2 border-r-2 border-stone-300"></span>
+        <span class="absolute bottom-2.5 left-2.5 w-4 h-4 border-b-2 border-l-2 border-stone-300"></span>
+        <span class="absolute bottom-2.5 right-2.5 w-4 h-4 border-b-2 border-r-2 border-stone-300"></span>
+
+        <svg viewBox="0 0 560 460" class="w-full h-auto" role="img" aria-label="Diagram showing a vessel beached at high tide and exposed as the tide recedes">
+          <rect x="0" y="0" width="560" height="460" fill="#F4F4F1" />
+
+          <text x="30" y="50" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="1.5" fill="#D06515">HIGH TIDE — BEACHING</text>
+          <line x1="30" y1="150" x2="530" y2="150" stroke="#B8B6AE" stroke-width="1.5" stroke-dasharray="2 6" />
+          <rect x="30" y="150" width="500" height="20" fill="#1E3A6B" opacity="0.15" />
+          <path d="M180,150 L180,110 L220,90 L340,90 L370,110 L370,150 Z" fill="#0E2142" />
+          <rect x="255" y="70" width="30" height="20" fill="#0E2142" />
+
+          <text x="30" y="260" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="1.5" fill="#4C7A5D">LOW TIDE — EXPOSED FOR CUTTING</text>
+          <line x1="30" y1="360" x2="530" y2="360" stroke="#B8B6AE" stroke-width="1.5" stroke-dasharray="2 6" />
+          <rect x="30" y="345" width="500" height="15" fill="#1E3A6B" opacity="0.1" />
+          <path d="M150,360 L150,290 L210,255 L400,255 L440,290 L440,360 Z" fill="#0E2142" />
+          <rect x="290" y="225" width="34" height="30" fill="#0E2142" />
+          <line x1="440" y1="290" x2="470" y2="290" stroke="#E67A22" stroke-width="1.5" stroke-dasharray="4 4" />
+          <line x1="440" y1="320" x2="490" y2="325" stroke="#E67A22" stroke-width="1.5" stroke-dasharray="4 4" />
+          <line x1="30" y1="380" x2="530" y2="380" stroke="#B8B6AE" stroke-width="1" opacity="0.4" />
+          <line x1="30" y1="400" x2="530" y2="400" stroke="#B8B6AE" stroke-width="1" opacity="0.3" />
+          <line x1="30" y1="420" x2="530" y2="420" stroke="#B8B6AE" stroke-width="1" opacity="0.2" />
+
+          <line x1="500" y1="170" x2="500" y2="340" stroke="#8A8878" stroke-width="1.5" stroke-dasharray="3 5" />
+          <path d="M494,335 L500,345 L506,335" stroke="#8A8878" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+          <text x="440" y="440" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="1" fill="#8A8878">TIDAL RANGE</text>
+        </svg>
+
+        <p class="mt-4 pt-4 border-t border-stone-200 font-mono text-[0.65rem] tracking-widest uppercase text-stone-400">
+          Fig. 01 — The tidal beaching method used across Alang
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,33 @@
+---
+import Navbar from '../components/Navbar.astro'
+import PageHeader from '../components/PageHeader.astro'
+import AlangGeography from '../components/alang/AlangGeography.astro'
+import AlangScale from '../components/alang/AlangScale.astro'
+import Footer from '../components/Footer.astro'
+import '../styles/global.css'
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Alang | Rudra Green Ship Recycling Group</title>
+  </head>
+  <body class="bg-paper">
+    <Navbar />
+    <PageHeader
+      eyebrow="Location"
+      title="Alang, Gujarat."
+      desc="The coastline that makes ship recycling at scale possible — and the location Rudra Green Ship Recycling operates from."
+      crumb="About Alang"
+      meta={[
+        { label: 'District', value: 'Bhavnagar, Gujarat' },
+        { label: 'Coast', value: 'Gulf of Khambhat' },
+        { label: 'Since', value: '1983' },
+      ]}
+    />
+    <AlangGeography />
+    <AlangScale />
+    <Footer />
+  </body>
+</html>

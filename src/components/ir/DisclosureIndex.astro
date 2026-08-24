@@ -1,0 +1,96 @@
+---
+const items = [
+  { no: 1, info: 'Standalone audited financials — 3 years', reg: 'ICDR Sch. VI, Para 11(I)(A)(ii)', section: 'IV. Financials', target: 'ir-financials', status: 'pending' },
+  { no: 2, info: 'Material subsidiary financials — 3 years', reg: 'ICDR Sch. VI, Para 11(I)(A)(ii)', section: 'IV. Financials', target: 'ir-financials', status: 'na' },
+  { no: 3, info: 'Overdues to material creditors', reg: 'Sch. VI, Para 12(A)(2)(iii)', section: 'VII. Offer Doc.', target: 'ir-offer', status: 'conditional' },
+  { no: 4, info: 'Industry Report', reg: 'AIBI email, 22 Oct 2021', section: 'VII. Offer Doc.', target: 'ir-offer', status: 'conditional' },
+  { no: 5, info: 'DRHP / RHP / Prospectus', reg: 'Regulation 26', section: 'VII. Offer Doc.', target: 'ir-offer', status: 'conditional' },
+  { no: 6, info: 'Monitoring Agency Report (quarterly)', reg: 'Regulation 41', section: 'VII. Offer Doc.', target: 'ir-offer', status: 'conditional' },
+  { no: 7, info: 'Group co. financials by market cap — 3 yrs', reg: 'Sch. VI, Clause 13(A)', section: 'VII. Offer Doc.', target: 'ir-offer', status: 'conditional' },
+  { no: 8, info: 'Material contracts & documents', reg: 'Sch. VI, Para 18(3)', section: 'VII. Offer Doc.', target: 'ir-offer', status: 'conditional' },
+  { no: 9, info: 'Top-5 group company financial line items', reg: 'Sch. VI, Para 13(A)', section: 'VII. Offer Doc.', target: 'ir-offer', status: 'conditional' },
+  { no: 10, info: 'Archival Policy', reg: 'Regulation 30(8)', section: 'III. Policies', target: 'ir-policies', status: 'pending' },
+  { no: 11, info: 'Policy on materiality of events/information', reg: 'Reg. 30(4)(ii)/46(2)(u)', section: 'III. Policies', target: 'ir-policies', status: 'pending' },
+  { no: 12, info: 'KMP for dealing with materiality', reg: 'Reg. 30(5)/46(2)(v)', section: 'II. Governance', target: 'ir-governance', status: 'pending' },
+  { no: 13, info: 'Annual Report + AGM notice', reg: 'Regulation 34(1)(a)', section: 'IV. Financials', target: 'ir-financials', status: 'pending' },
+  { no: 14, info: 'Details of the business', reg: 'Reg. 46(2)(a)', section: 'I. Overview', target: 'ir-overview', status: 'live' },
+  { no: 15, info: 'MOA & AOA', reg: 'Reg. 46(2)(aa)', section: 'I. Overview', target: 'ir-overview', status: 'pending' },
+  { no: 16, info: 'Board of directors — profiles & directorships', reg: 'Reg. 46(2)(ab)', section: 'II. Governance', target: 'ir-governance', status: 'pending' },
+  { no: 17, info: 'Terms of appointment — Independent Director', reg: 'Reg. 46(2)(b)', section: 'II. Governance', target: 'ir-governance', status: 'pending' },
+  { no: 18, info: 'Composition of board committees', reg: 'Reg. 46(2)(c)', section: 'II. Governance', target: 'ir-governance', status: 'pending' },
+  { no: 19, info: 'Code of Conduct — board & senior management', reg: 'Reg. 46(2)(d)', section: 'II. Governance', target: 'ir-governance', status: 'pending' },
+  { no: 20, info: 'Vigil Mechanism / Whistle Blower Policy', reg: 'Reg. 46(2)(e)', section: 'III. Policies', target: 'ir-policies', status: 'pending' },
+  { no: 21, info: 'Criteria for payment to non-exec directors', reg: 'Reg. 46(2)(f)', section: 'II. Governance', target: 'ir-governance', status: 'conditional' },
+  { no: 22, info: 'Related Party Transactions policy', reg: 'Reg. 46(2)(g)', section: 'III. Policies', target: 'ir-policies', status: 'pending' },
+  { no: 23, info: 'Policy for determining material subsidiaries', reg: 'Reg. 46(2)(h)', section: 'III. Policies', target: 'ir-policies', status: 'pending' },
+  { no: 24, info: 'Independent director familiarisation programme', reg: 'Reg. 46(2)(i)', section: 'II. Governance', target: 'ir-governance', status: 'pending' },
+  { no: 25, info: 'Grievance redressal email', reg: 'Reg. 46(2)(j)', section: 'VIII. Grievance', target: 'ir-grievance', status: 'pending' },
+  { no: 26, info: 'Contact for designated grievance officials', reg: 'Reg. 46(2)(k)', section: 'VIII. Grievance', target: 'ir-grievance', status: 'pending' },
+  { no: 27, info: 'Board meeting notices & financial results', reg: 'Reg. 46(2)(l)', section: 'IV. Financials', target: 'ir-financials', status: 'pending' },
+  { no: 28, info: 'Shareholding pattern', reg: 'Reg. 46(2)(m)', section: 'V. Shareholding', target: 'ir-shareholding', status: 'pending' },
+  { no: 29, info: 'Agreements with media companies', reg: 'Reg. 46(2)(n)', section: 'VI. Regulatory', target: 'ir-regulatory', status: 'conditional' },
+  { no: 30, info: 'Analyst / institutional investor meet schedule', reg: 'Reg. 46(2)(o)', section: 'VI. Regulatory', target: 'ir-regulatory', status: 'conditional' },
+  { no: 31, info: 'Earnings call recordings, video & transcripts', reg: 'Reg. 46(2)(oa)', section: 'VI. Regulatory', target: 'ir-regulatory', status: 'conditional' },
+  { no: 32, info: 'Old / new name (post name-change, 1 year)', reg: 'Reg. 46(2)(p)', section: 'I. Overview', target: 'ir-overview', status: 'na' },
+  { no: 33, info: 'Credit rating for outstanding instruments', reg: 'Reg. 46(2)(r)', section: 'VI. Regulatory', target: 'ir-regulatory', status: 'conditional' },
+  { no: 34, info: 'Secretarial Compliance Report', reg: 'Reg. 46(2)(t)', section: 'IV. Financials', target: 'ir-financials', status: 'pending' },
+  { no: 35, info: 'Contact — KMP authorised for materiality', reg: 'Reg. 30(5)/46(2)(v)', section: 'II. Governance', target: 'ir-governance', status: 'pending' },
+  { no: 36, info: 'Statement of deviation (quarterly)', reg: 'Reg. 46(2)(x)/32', section: 'VI. Regulatory', target: 'ir-regulatory', status: 'pending' },
+  { no: 37, info: 'Dividend Distribution Policy', reg: 'Reg. 43A/46(2)(y)', section: 'III. Policies', target: 'ir-policies', status: 'conditional' },
+  { no: 38, info: 'Related party transaction details', reg: 'Regulation 23(9)', section: 'IV. Financials', target: 'ir-financials', status: 'pending' },
+  { no: 39, info: 'Employee Benefit Scheme documents', reg: 'Reg. 46(2)(za)', section: 'III. Policies', target: 'ir-policies', status: 'pending' },
+  { no: 40, info: 'Insider Trading Policy', reg: 'PIT Regulation 8(1)', section: 'III. Policies', target: 'ir-policies', status: 'pending' },
+  { no: 41, info: 'Director / KMP qualification & remuneration policy', reg: 'Companies Act, Sec. 178', section: 'III. Policies', target: 'ir-policies', status: 'pending' },
+  { no: 42, info: 'CSR Policy & approved projects', reg: 'CSR Rules 2014, r.9', section: 'III. Policies', target: 'ir-policies', status: 'pending' },
+  { no: 43, info: 'Annual Return', reg: 'Sec. 92(3)/46(2)(z)', section: 'IV. Financials', target: 'ir-financials', status: 'pending' },
+  { no: 44, info: 'Closure of register of members/debenture holders', reg: 'Mgmt. & Admin. Rules, r.10', section: 'IV. Financials', target: 'ir-financials', status: 'pending' },
+  { no: 45, info: 'Registered office, CIN, phone, email, grievance contact on landing page', reg: 'Sec. 12 / Rule 26(1)', section: 'VIII. Grievance', target: 'ir-grievance', status: 'pending' },
+]
+
+const statusMap = {
+  pending: 'text-rust-500 bg-rust-500/10 border-rust-500/25',
+  conditional: 'text-amber-600 bg-amber-500/10 border-amber-500/30',
+  na: 'text-stone-500 bg-stone-200/60 border-stone-300',
+  live: 'text-sage-600 bg-sage-600/10 border-sage-600/30',
+}
+const statusLabel = { pending: 'Pending', conditional: 'Conditional', na: 'N/A', live: 'Live' }
+---
+
+<section id="ir-index" data-title="Disclosure Index" class="max-w-4xl pt-16 mt-16 border-t border-stone-300">
+  <details class="group">
+    <summary class="flex items-center gap-3 cursor-pointer font-display font-semibold text-xl text-navy-950 list-none mb-6">
+      <span class="flex items-center justify-center w-7 h-7 rounded-full border border-stone-300 text-sm font-mono shrink-0 group-open:hidden">+</span>
+      <span class="hidden items-center justify-center w-7 h-7 rounded-full border border-stone-300 text-sm font-mono shrink-0 group-open:flex">–</span>
+      Full disclosure index — all 45 checklist items mapped to this page
+    </summary>
+
+    <div class="overflow-x-auto border border-stone-200 bg-white">
+      <table class="w-full text-xs min-w-[760px]">
+        <thead class="sticky top-0 bg-paper">
+          <tr class="border-b border-stone-200">
+            <th class="text-left font-mono text-[10px] text-stone-400 uppercase tracking-wide px-4 py-3 w-10">No.</th>
+            <th class="text-left font-mono text-[10px] text-stone-400 uppercase tracking-wide px-4 py-3">Information</th>
+            <th class="text-left font-mono text-[10px] text-stone-400 uppercase tracking-wide px-4 py-3 whitespace-nowrap">Provision</th>
+            <th class="text-left font-mono text-[10px] text-stone-400 uppercase tracking-wide px-4 py-3 whitespace-nowrap">Section</th>
+            <th class="text-left font-mono text-[10px] text-stone-400 uppercase tracking-wide px-4 py-3">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {items.map((it) => (
+            <tr class="border-b border-stone-100 last:border-0 hover:bg-paper transition-colors">
+              <td class="font-mono text-stone-400 px-4 py-3">{it.no}</td>
+              <td class="text-navy-950 px-4 py-3 max-w-xs">{it.info}</td>
+              <td class="font-mono text-stone-500 px-4 py-3 whitespace-nowrap">{it.reg}</td>
+              <td class="px-4 py-3 whitespace-nowrap">
+                <a href={`#${it.target}`} class="text-rust-500 font-medium hover:text-rust-600">{it.section}</a>
+              </td>
+              <td class="px-4 py-3">
+                <span class={`eyebrow px-2 py-0.5 rounded-full border whitespace-nowrap ${statusMap[it.status]}`}>{statusLabel[it.status]}</span>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </details>
+</section>

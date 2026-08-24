@@ -1,0 +1,230 @@
+---
+const without = [
+    "Uncontrolled beaching with no waste segregation",
+    "Hazardous materials handled without certified disposal",
+    "No structured worker health or safety protocol",
+    "No documented recycling plan per vessel",
+];
+const withStandard = [
+    "Controlled beaching in designated cutting zones",
+    "Segregated waste routed to certified disposal facilities",
+    "Structured health measures across every stage",
+    "A documented Ship Recycling Plan per vessel, per IHM",
+];
+---
+
+<section class="relative bg-paper py-4 lg:py-8 overflow-hidden">
+    <div class="max-w-[1800px] mx-auto px-6 sm:px-10 xl:px-16 2xl:px-20">
+        <div class="max-w-3xl mb-16 lg:mb-20">
+            <p class="eyebrow text-sage-600 mb-5">
+                What "green" recycling means
+            </p>
+            <h2
+                class="font-display font-semibold text-3xl lg:text-4xl xl:text-[2.75rem] text-navy-950 leading-[1.1] mb-6"
+            >
+                Recycling built around people and the environment, not around
+                cutting corners.
+            </h2>
+            <p
+                class="text-stone-600 text-base lg:text-lg leading-relaxed max-w-2xl"
+            >
+                Ship recycling recovers steel and materials that would otherwise
+                be lost — but done without controls, it carries real risk to
+                workers and the coastline it happens on. "Green" is the
+                difference between those two outcomes.
+            </p>
+        </div>
+
+        <!-- COMPARISON PANEL -->
+        <div class="relative">
+            <div class="grid lg:grid-cols-2 border border-stone-300">
+                <!-- WITHOUT -->
+                <div class="relative bg-stone-100/70 p-8 lg:p-12 lg:pr-16">
+                    <div class="flex items-center gap-3 mb-8">
+                        <span
+                            class="flex items-center justify-center w-9 h-9 rounded-full border border-stone-400/50 bg-white shrink-0"
+                        >
+                            <svg
+                                width="16"
+                                height="16"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                class="text-stone-500"
+                                ><path
+                                    d="M12 9v4m0 4h.01M10.3 3.9L2 18a2 2 0 001.7 3h16.6a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z"
+                                    stroke="currentColor"
+                                    stroke-width="1.8"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"></path></svg
+                            >
+                        </span>
+                        <p class="eyebrow text-stone-500">Without a standard</p>
+                    </div>
+                    <ul class="space-y-5">
+                        {
+                            without.map((item) => (
+                                <li class="flex items-start gap-3">
+                                    <svg
+                                        width="16"
+                                        height="16"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        class="text-stone-400 shrink-0 mt-0.5"
+                                    >
+                                        <path
+                                            d="M6 6l12 12M18 6L6 18"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                        />
+                                    </svg>
+                                    <span class="text-stone-500 text-sm leading-relaxed">
+                                        {item}
+                                    </span>
+                                </li>
+                            ))
+                        }
+                    </ul>
+                </div>
+
+                <!-- MOBILE-ONLY divider, sits inline in normal flow between stacked panels -->
+                <div
+                    class="lg:hidden flex items-center justify-center py-3 bg-stone-100/70"
+                >
+                    <span
+                        class="flex items-center justify-center w-10 h-10 rounded-full bg-navy-950 border-4 border-paper shadow-[0_4px_16px_rgba(14,33,66,0.2)] rotate-90"
+                    >
+                        <svg
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            class="text-white"
+                            ><path
+                                d="M5 12h14M13 6l6 6-6 6"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"></path></svg
+                        >
+                    </span>
+                </div>
+
+                <!-- WITH HKC -->
+                <div class="relative bg-white p-8 lg:p-12 lg:pl-16">
+                    <div class="flex items-center gap-3 mb-8">
+                        <span
+                            class="flex items-center justify-center w-9 h-9 rounded-full border border-sage-600/40 bg-sage-600/10 shrink-0"
+                        >
+                            <svg
+                                width="16"
+                                height="16"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                class="text-sage-600"
+                                ><path
+                                    d="M12 2l7 3v6c0 5-3.4 8.7-7 10-3.6-1.3-7-5-7-10V5l7-3z"
+                                    stroke="currentColor"
+                                    stroke-width="1.8"
+                                    stroke-linejoin="round"></path></svg
+                            >
+                        </span>
+                        <p class="eyebrow text-sage-600">
+                            With the HKC standard
+                        </p>
+                    </div>
+                    <ul class="space-y-5">
+                        {
+                            withStandard.map((item) => (
+                                <li class="flex items-start gap-3">
+                                    <svg
+                                        width="16"
+                                        height="16"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        class="text-sage-600 shrink-0 mt-0.5"
+                                    >
+                                        <path
+                                            d="M20 6L9 17l-5-5"
+                                            stroke="currentColor"
+                                            stroke-width="2.5"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        />
+                                    </svg>
+                                    <span class="text-navy-900 text-sm leading-relaxed">
+                                        {item}
+                                    </span>
+                                </li>
+                            ))
+                        }
+                    </ul>
+                </div>
+            </div>
+
+            <!-- DESKTOP-ONLY divider, only rendered inside the actual 2-col grid, so it can't exist without the grid also being active -->
+            <div
+                class="hidden lg:grid lg:grid-cols-2 absolute inset-0 pointer-events-none"
+            >
+                <div class="relative">
+                    <div
+                        class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 flex items-center justify-center w-16 h-16 rounded-full bg-navy-950 border-4 border-paper shadow-[0_8px_24px_rgba(14,33,66,0.25)]"
+                    >
+                        <svg
+                            width="20"
+                            height="20"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            class="text-white"
+                            ><path
+                                d="M5 12h14M13 6l6 6-6 6"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"></path></svg
+                        >
+                    </div>
+                </div>
+                <div></div>
+            </div>
+        </div>
+
+        <!-- SUPPORTING PHOTO + PULL QUOTE -->
+        <div
+            class="grid lg:grid-cols-[1fr_1.2fr] gap-12 xl:gap-16 items-center mt-20 lg:mt-28"
+        >
+            <div class="relative order-2 lg:order-1">
+                <span
+                    class="pointer-events-none select-none absolute -top-8 -left-4 font-display font-bold text-[6rem] xl:text-[7.5rem] leading-none text-navy-950/[0.045] -z-10"
+                >
+                    HKC
+                </span>
+                <div class="relative aspect-[4/3] overflow-hidden bg-stone-200">
+                    <img
+                        src="/img/gsr/yard-overview.jpg"
+                        alt="Rudra Green Ship Recycling yard at Alang"
+                        class="w-full h-full object-cover grayscale-[15%]"
+                        loading="lazy"
+                    />
+                    <span
+                        class="absolute top-4 left-4 w-4 h-4 border-t-2 border-l-2 border-white/60"
+                    ></span>
+                    <span
+                        class="absolute bottom-4 right-4 w-4 h-4 border-b-2 border-r-2 border-white/60"
+                    ></span>
+                </div>
+            </div>
+
+            <div class="order-1 lg:order-2">
+                <p
+                    class="font-display font-medium text-2xl lg:text-3xl text-navy-950 leading-[1.3] max-w-lg"
+                >
+                    At Alang, that standard isn't <span
+                        class="italic text-rust-500">added afterward</span
+                    > — it's what the process is built around, from the first cut
+                    to final disposal.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>

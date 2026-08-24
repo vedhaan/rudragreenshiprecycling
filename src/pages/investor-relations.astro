@@ -1,0 +1,45 @@
+---
+import Navbar from '../components/Navbar.astro'
+import IRHero from '../components/ir/IRHero.astro'
+import IRNav from '../components/ir/IRNav.astro'
+import IRSections from '../components/ir/IRSections.astro'
+import IRNavMobile from '../components/ir/IRNavMobile.astro'
+import DisclosureIndex from '../components/ir/DisclosureIndex.astro'
+import Footer from '../components/Footer.astro'
+import '../styles/global.css'
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Investor Relations | Rudra Green Ship Recycling Group</title>
+  </head>
+  <body class="bg-paper">
+    <Navbar />
+    <IRHero />
+
+    <section class="relative py-4 lg:py-8">
+      <div class="max-w-[1800px] mx-auto px-6 sm:px-10 xl:px-16 2xl:px-20">
+
+        <!-- Desktop: split-pane shell — left nav fixed in place, right pane scrolls independently -->
+        <div class="hidden lg:grid lg:grid-cols-[224px_1fr] lg:gap-16 xl:gap-20 lg:h-[calc(100vh-6.5rem)]">
+          <IRNav />
+          <div id="ir-scroll-pane" class="min-w-0 h-full overflow-y-auto pr-2 scroll-smooth">
+            <IRSections />
+            <DisclosureIndex />
+          </div>
+        </div>
+
+        <!-- Mobile/tablet: normal document flow, horizontal subnav -->
+        <div class="lg:hidden">
+          <IRNavMobile />
+          <IRSections />
+          <DisclosureIndex />
+        </div>
+      </div>
+    </section>
+
+    <Footer />
+  </body>
+</html>

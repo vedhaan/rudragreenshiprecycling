@@ -1,0 +1,71 @@
+---
+const sections = [
+  { id: 'ir-overview', roman: 'I', label: 'Company Overview' },
+  { id: 'ir-governance', roman: 'II', label: 'Board & Governance' },
+  { id: 'ir-policies', roman: 'III', label: 'Policies & Codes' },
+  { id: 'ir-financials', roman: 'IV', label: 'Financials & Reports' },
+  { id: 'ir-shareholding', roman: 'V', label: 'Shareholding Pattern' },
+  { id: 'ir-regulatory', roman: 'VI', label: 'Regulatory Disclosures' },
+  { id: 'ir-offer', roman: 'VII', label: 'Offer Document' },
+  { id: 'ir-grievance', roman: 'VIII', label: 'Investor Grievance' },
+  { id: 'ir-index', roman: '', label: 'Full Disclosure Index' },
+]
+---
+
+<nav class="h-full overflow-y-auto pt-1">
+  <p class="eyebrow text-stone-400 mb-5">On this page</p>
+  <ul class="border-l-2 border-stone-300">
+    {sections.map((s) => (
+      <li>
+        <a href={`#${s.id}`} data-ir-link={s.id}
+          class="ir-nav-link flex items-baseline gap-3 py-2.5 pl-5 -ml-0.5 border-l-2 border-transparent text-stone-500 hover:text-navy-900 transition-colors text-sm">
+          {s.roman && <span class="font-mono text-[10px] text-stone-400 shrink-0">{s.roman}</span>}
+          <span>{s.label}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<style>
+  .ir-nav-link.is-active {
+    color: #0E2142;
+    border-left-color: #E67A22;
+    font-weight: 600;
+  }
+  .ir-nav-link.is-active span:first-child {
+    color: #E67A22;
+  }
+</style>
+
+<script>
+  const pane = document.getElementById('ir-scroll-pane')
+  if (pane) {
+    const links = Array.from(document.querySelectorAll('.ir-nav-link')) as HTMLAnchorElement[]
+    const targets = Array.from(pane.querySelectorAll('section[id^="ir-"]')) as HTMLElement[]
+
+    // Click: scroll the PANE, not the window — this is the key difference from before.
+    links.forEach((link) => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault()
+        const target = document.getElementById(link.dataset.irLink!)
+        if (!target) return
+        const offset = target.offsetTop - 12 // small breathing room from the pane's top edge
+        pane.scrollTo({ top: offset, behavior: 'smooth' })
+      })
+    })
+
+    // Active-link tracking, scoped to the pane's own scroll — not the viewport.
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return
+          const id = entry.target.id
+          links.forEach((l) => l.classList.toggle('is-active', l.dataset.irLink === id))
+        })
+      },
+      { root: pane, rootMargin: '-10% 0px -70% 0px', threshold: 0 }
+    )
+    targets.forEach((t) => observer.observe(t))
+  }
+</script>

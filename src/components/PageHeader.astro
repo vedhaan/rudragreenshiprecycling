@@ -1,0 +1,81 @@
+---
+interface MetaItem { label: string; value: string }
+interface Props {
+  eyebrow: string
+  title: string
+  desc?: string
+  crumb: string
+  meta?: MetaItem[]
+}
+const { eyebrow, title, desc, crumb, meta = [] } = Astro.props
+---
+<section class="relative bg-paper overflow-hidden pt-10 lg:pt-14 pb-24 lg:pb-32">
+
+  <!-- layered angled steel-plate panels, bleeding off the right edge -->
+  <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+    <div class="absolute -right-24 top-[-10%] w-[55%] h-[140%] bg-navy-950/[0.035] [clip-path:polygon(30%_0,100%_0,100%_100%,0_100%)]"></div>
+    <div class="absolute -right-10 top-[-5%] w-[38%] h-[120%] bg-rust-500/[0.045] [clip-path:polygon(35%_0,100%_0,100%_100%,5%_100%)]"></div>
+    <div class="absolute right-10 top-[5%] w-[20%] h-[90%] bg-sage-600/[0.04] [clip-path:polygon(20%_0,100%_0,80%_100%,0_100%)] hidden lg:block"></div>
+
+    <!-- large faint hull silhouette, technical line-art -->
+    <svg class="absolute right-0 bottom-0 w-[65%] max-w-[900px] h-auto opacity-[0.05] hidden lg:block" viewBox="0 0 900 380" fill="none">
+      <path d="M40,300 L40,180 L120,110 L620,110 L780,180 L780,300 Z" stroke="#0E2142" stroke-width="2" />
+      <line x1="0" y1="300" x2="900" y2="300" stroke="#0E2142" stroke-width="1.5" />
+      <rect x="220" y="60" width="90" height="55" stroke="#0E2142" stroke-width="2" />
+      <line x1="255" y1="20" x2="255" y2="60" stroke="#0E2142" stroke-width="2" />
+      <circle cx="140" cy="230" r="10" stroke="#0E2142" stroke-width="1.5" />
+      <circle cx="185" cy="230" r="10" stroke="#0E2142" stroke-width="1.5" />
+      <circle cx="230" cy="230" r="10" stroke="#0E2142" stroke-width="1.5" />
+      <circle cx="275" cy="230" r="10" stroke="#0E2142" stroke-width="1.5" />
+      <line x1="620" y1="110" x2="620" y2="300" stroke="#0E2142" stroke-width="1.5" stroke-dasharray="4 6" />
+    </svg>
+
+    <!-- crop marks, corner detailing -->
+    <span class="hidden lg:block absolute top-8 right-8 w-5 h-5 border-t-2 border-r-2 border-navy-950/15"></span>
+    <span class="hidden lg:block absolute bottom-8 right-8 w-5 h-5 border-b-2 border-r-2 border-navy-950/15"></span>
+  </div>
+
+  <div class="relative max-w-[1800px] mx-auto px-6 sm:px-10 xl:px-16 2xl:px-20">
+    <div class="flex items-center gap-2 mb-12 lg:mb-16 text-xs font-mono text-stone-500 min-w-0">
+      <a href="/" class="hover:text-rust-600 transition-colors shrink-0">Home</a>
+      <span class="shrink-0">/</span>
+      <span class="text-navy-900 truncate">{crumb}</span>
+    </div>
+
+    <div class:list={['grid gap-12 items-end', meta.length > 0 ? 'lg:grid-cols-[1.3fr_0.7fr]' : '']}>
+      <div class="min-w-0">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="w-8 h-px bg-rust-500 shrink-0"></span>
+          <p class="eyebrow text-rust-500">{eyebrow}</p>
+        </div>
+        <h1 class="font-display font-medium text-navy-950 text-[2.5rem] sm:text-5xl lg:text-6xl xl:text-[3.75rem] leading-[1.05] tracking-tight break-words max-w-3xl">
+          {title}
+        </h1>
+        {desc && (
+          <p class="mt-6 text-stone-600 text-base lg:text-lg leading-relaxed max-w-2xl">{desc}</p>
+        )}
+      </div>
+
+      {meta.length > 0 && (
+        <div class="relative bg-white/90 backdrop-blur-sm border border-stone-300 p-6 min-w-0 shadow-[0_1px_2px_rgba(14,33,66,0.04),0_16px_32px_-12px_rgba(14,33,66,0.14)]">
+          <span class="absolute top-2.5 left-2.5 w-1.5 h-1.5 rounded-full bg-stone-300"></span>
+          <span class="absolute top-2.5 right-2.5 w-1.5 h-1.5 rounded-full bg-stone-300"></span>
+          <span class="absolute bottom-2.5 left-2.5 w-1.5 h-1.5 rounded-full bg-stone-300"></span>
+          <span class="absolute bottom-2.5 right-2.5 w-1.5 h-1.5 rounded-full bg-stone-300"></span>
+
+          <p class="eyebrow text-stone-400 mb-4">At a glance</p>
+          <dl>
+            {meta.map((m, i) => (
+              <div class:list={['flex items-center justify-between gap-4 py-3', i !== 0 && 'border-t border-dashed border-stone-300']}>
+                <dt class="font-mono text-[11px] text-stone-500 shrink-0">{m.label}</dt>
+                <dd class="font-semibold text-navy-950 text-sm text-right min-w-0 break-words">{m.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      )}
+    </div>
+  </div>
+
+  <div class="absolute bottom-0 left-0 right-0 border-t border-stone-300/70"></div>
+</section>

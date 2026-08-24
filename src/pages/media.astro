@@ -1,0 +1,32 @@
+---
+import Navbar from '../components/Navbar.astro'
+import PageHeader from '../components/PageHeader.astro'
+import MediaGallery from '../components/media/MediaGallery.astro'
+import PressMentions from '../components/media/PressMentions.astro'
+import Footer from '../components/Footer.astro'
+import '../styles/global.css'
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Media | Rudra Green Ship Recycling Group</title>
+  </head>
+  <body class="bg-paper">
+    <Navbar />
+    <PageHeader
+      eyebrow="Media"
+      title="Photos, activities, and coverage."
+      desc="A visual record of yard operations, certifications, and community activities — alongside press coverage as it's published."
+      crumb="Media"
+      meta={[
+        { label: 'Categories', value: '3' },
+        { label: 'Format', value: 'Filterable gallery' },
+      ]}
+    />
+    <MediaGallery />
+    <PressMentions />
+    <Footer />
+  </body>
+</html>

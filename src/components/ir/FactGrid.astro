@@ -1,0 +1,16 @@
+---
+interface Item { label: string; value: string; flag?: string; href?: string }
+interface Props { items: Item[] }
+const { items } = Astro.props
+---
+<div class="grid sm:grid-cols-2 border border-stone-200 bg-white">
+  {items.map((it) => (
+    <div class="p-5 border-b border-r border-stone-200 min-w-0 [&:nth-last-child(-n+2)]:border-b-0 sm:[&:nth-child(odd):nth-last-child(-n+1)]:border-r-0">
+      <p class="font-mono text-[10px] text-stone-400 mb-1.5">{it.label}</p>
+      <p class="font-semibold text-navy-950 text-sm break-words">
+        {it.href ? <a href={it.href} class="hover:text-rust-600 transition-colors">{it.value}</a> : it.value}
+        {it.flag && <span class="eyebrow text-rust-500 bg-rust-500/10 border border-rust-500/25 px-2 py-0.5 rounded-full ml-2">{it.flag}</span>}
+      </p>
+    </div>
+  ))}
+</div>

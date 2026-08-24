@@ -1,0 +1,33 @@
+---
+import Navbar from '../components/Navbar.astro'
+import PageHeader from '../components/PageHeader.astro'
+import MeasuresTabs from '../components/measures/MeasuresTabs.astro'
+import ProcessCallout from '../components/process/ProcessCallout.astro'
+import Footer from '../components/Footer.astro'
+import '../styles/global.css'
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Health & Safety Measures | Rudra Green Ship Recycling Group</title>
+  </head>
+  <body class="bg-paper">
+    <Navbar />
+    <PageHeader
+      eyebrow="Green Ship Recycling"
+      title="Health, safety, and environmental measures."
+      desc="Every stage of the recycling process is governed by measures covering worker health, environmental protection, and waste management — maintained to HKC and applicable ISO standards."
+      crumb="Measures"
+      meta={[
+        { label: 'Categories', value: '3' },
+        { label: 'Standard', value: 'HKC · ISO 14001' },
+        { label: 'Location', value: 'Alang, Gujarat' },
+      ]}
+    />
+    <MeasuresTabs />
+    <ProcessCallout />
+    <Footer />
+  </body>
+</html>

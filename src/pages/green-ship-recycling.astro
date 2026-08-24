@@ -1,0 +1,33 @@
+---
+import Navbar from '../components/Navbar.astro'
+import PageHeader from '../components/PageHeader.astro'
+import GSROverview from '../components/gsr/GSROverview.astro'
+import GSRExplore from '../components/gsr/GSRExplore.astro'
+import Footer from '../components/Footer.astro'
+import '../styles/global.css'
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Green Ship Recycling | Rudra Green Ship Recycling Group</title>
+  </head>
+  <body class="bg-paper">
+    <Navbar />
+    <PageHeader
+      eyebrow="Overview"
+      title="Green ship recycling, done right."
+      desc="An HKC-compliant approach to ship recycling — built around worker safety and environmental protection at every stage, not as an afterthought."
+      crumb="Green Ship Recycling"
+      meta={[
+        { label: 'Standard', value: 'HKC Compliant' },
+        { label: 'Location', value: 'Alang, Gujarat' },
+        { label: 'Operating since', value: '1991' },
+      ]}
+    />
+    <GSROverview />
+    <GSRExplore />
+    <Footer />
+  </body>
+</html>

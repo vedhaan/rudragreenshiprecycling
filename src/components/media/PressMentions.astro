@@ -1,0 +1,65 @@
+<section class="relative bg-white border-y border-stone-200 py-24 lg:py-32 overflow-hidden">
+  <div class="hidden xl:block absolute inset-0 opacity-[0.03] pointer-events-none"
+    style="background-image: linear-gradient(#0E2142 1px, transparent 1px), linear-gradient(90deg, #0E2142 1px, transparent 1px); background-size: 64px 64px;">
+  </div>
+
+  <div class="relative max-w-[1800px] mx-auto px-6 sm:px-10 xl:px-16 2xl:px-20">
+    <div class="grid lg:grid-cols-[0.8fr_1.2fr] gap-16 xl:gap-24">
+
+      <!-- LEFT: framing + media contact -->
+      <div>
+        <div class="flex items-center gap-3 mb-6">
+          <span class="w-8 h-px bg-rust-500 shrink-0"></span>
+          <p class="eyebrow text-rust-500">Press & recognition</p>
+        </div>
+        <h2 class="font-display font-semibold text-3xl lg:text-4xl text-navy-950 leading-[1.15] mb-8">
+          A record, kept as coverage comes in.
+        </h2>
+        <p class="text-stone-600 text-base leading-relaxed max-w-sm mb-12">
+          Press mentions, industry recognition, and third-party coverage will be logged here
+          as they're published.
+        </p>
+
+        <!-- media contact nameplate -->
+        <div class="relative bg-paper border border-stone-300 p-7">
+          <span class="absolute top-2.5 left-2.5 w-1.5 h-1.5 rounded-full bg-stone-300"></span>
+          <span class="absolute top-2.5 right-2.5 w-1.5 h-1.5 rounded-full bg-stone-300"></span>
+          <span class="absolute bottom-2.5 left-2.5 w-1.5 h-1.5 rounded-full bg-stone-300"></span>
+          <span class="absolute bottom-2.5 right-2.5 w-1.5 h-1.5 rounded-full bg-stone-300"></span>
+
+          <p class="eyebrow text-stone-500 mb-4">Media inquiries</p>
+          <a href="mailto:works@rudragreenshiprecycling.com" class="font-display font-semibold text-navy-950 text-lg hover:text-rust-600 transition-colors break-all">
+            works@rudragreenshiprecycling.com
+          </a>
+        </div>
+      </div>
+
+      <!-- RIGHT: coverage log -->
+      <div>
+        <div class="flex items-center justify-between mb-6">
+          <p class="eyebrow text-stone-500">Coverage log</p>
+          <span class="font-mono text-xs text-stone-400">0 entries</span>
+        </div>
+
+        <div class="bg-paper border border-stone-200">
+          {[1, 2, 3].map(() => (
+            <div class="flex items-center gap-5 px-6 py-6 border-b border-stone-200 border-dashed last:border-b-0">
+              <span class="flex items-center justify-center w-10 h-10 rounded-full border border-dashed border-stone-300 shrink-0">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" class="text-stone-400"><path d="M4 4h16v16H4z M4 9h16 M9 9v11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <div class="flex-1 min-w-0">
+                <p class="text-stone-500 text-sm">Open slot — publication, date, and headline to be added</p>
+              </div>
+              <span class="eyebrow text-rust-500 bg-rust-500/10 border border-rust-500/25 px-2 py-0.5 rounded-full shrink-0">open</span>
+            </div>
+          ))}
+        </div>
+
+        <p class="mt-5 text-stone-500 text-xs leading-relaxed max-w-lg">
+          When coverage is available, each entry should link to the source and note the
+          publication and date — replacing these placeholder rows.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

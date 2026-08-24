@@ -1,0 +1,112 @@
+---
+const categories = [
+  {
+    key: 'health',
+    label: 'Health Measures',
+    intro: 'Ship breaking involves phases that can affect worker health. Processes are designed at every stage so no worker is exposed to unnecessary risk.',
+    items: [
+      { title: 'Pre-employment & periodic medical checkups', desc: 'Workers undergo health screening before assignment and at regular intervals during employment.' },
+      { title: 'Personal protective equipment (PPE)', desc: 'Helmets, safety harnesses, respiratory protection, and cut-resistant gear issued and enforced across cutting zones.' },
+      { title: 'Gas-free & confined space certification', desc: 'Enclosed spaces are tested and certified gas-free before any worker enters, in line with HKC requirements.' },
+      { title: 'On-site medical facility', desc: 'First-response medical care available on-site for the duration of yard operations.' },
+    ],
+  },
+  {
+    key: 'environment',
+    label: 'Environment & Safety',
+    intro: 'Every applicable environmental and safety standard is followed, with precautions taken to preserve sterility and maintain international compliance.',
+    items: [
+      { title: 'Impermeable cutting surface', desc: 'Cutting operations take place on an impermeable floor to prevent contamination of surrounding soil and water.' },
+      { title: 'Oil & bilge water separation', desc: 'Dedicated collection tanks separate oil and bilge waste from the general waste stream before treatment.' },
+      { title: 'Fire safety & emergency response', desc: 'Fire-fighting equipment and emergency response protocols maintained across all active cutting zones.' },
+      { title: 'Third-party environmental audits', desc: 'Regular audits against ISO 14001 and applicable pollution control standards.' },
+    ],
+  },
+  {
+    key: 'waste',
+    label: 'Waste Management',
+    intro: 'Ships carry hazardous material by necessity at sea. That same material is disposed of correctly on land, without impact to people or environment.',
+    items: [
+      { title: 'Segregated waste streams', desc: 'Recoverable steel, hazardous waste, and general waste are separated at the point of origin, not after the fact.' },
+      { title: 'Certified hazardous waste disposal', desc: 'Hazardous materials are routed to certified third-party disposal facilities in accordance with pollution control regulations.' },
+      { title: 'Asbestos & hazardous material handling', desc: 'Materials identified in the vessel\'s Inventory of Hazardous Materials (IHM) are handled under controlled procedures.' },
+      { title: 'Waste tracking & documentation', desc: 'Disposal records maintained for regulatory reporting and audit purposes.' },
+    ],
+  },
+]
+---
+
+<section class="relative bg-paper py-4 lg:py-8 overflow-hidden">
+  <div class="max-w-[1800px] mx-auto px-6 sm:px-10 xl:px-16 2xl:px-20">
+    <div class="max-w-4xl mb-14 lg:mb-16">
+      <div class="flex items-center gap-3 mb-5">
+        <span class="w-8 h-px bg-sage-600 shrink-0"></span>
+        <p class="eyebrow text-sage-600">Standards & measures</p>
+      </div>
+      <h2 class="font-display font-semibold text-3xl lg:text-4xl text-navy-950 leading-[1.1]">
+        Three categories, one standard.
+      </h2>
+    </div>
+
+    <!-- TAB CONTROL -->
+    <div class="flex flex-wrap gap-2 mb-10 border-b border-stone-300 pb-0">
+      {categories.map((c, i) => (
+        <button
+          type="button"
+          class="measure-tab-btn relative px-5 py-3.5 text-sm font-medium text-stone-500 hover:text-navy-900 transition-colors data-[active=true]:text-navy-950"
+          data-tab={c.key}
+          data-active={i === 0 ? 'true' : 'false'}
+        >
+          {c.label}
+          <span class="measure-tab-indicator absolute left-0 right-0 bottom-0 h-0.5 bg-rust-500 scale-x-0 origin-left transition-transform duration-300 data-[active=true]:scale-x-100" data-active={i === 0 ? 'true' : 'false'}></span>
+        </button>
+      ))}
+    </div>
+
+    <!-- TAB PANELS -->
+    <div class="relative">
+      {categories.map((c, i) => (
+        <div class="measure-tab-panel" data-panel={c.key} style={i === 0 ? '' : 'display:none'}>
+          <p class="text-stone-600 text-base leading-relaxed max-w-2xl mb-10">{c.intro}</p>
+
+          <div class="grid sm:grid-cols-2 gap-5">
+            {c.items.map((item, idx) => (
+              <div class="bg-white border border-stone-200 p-6 min-w-0">
+                <span class="font-mono text-xs text-stone-400">{String(idx + 1).padStart(2, '0')}</span>
+                <p class="font-display font-semibold text-navy-950 text-base mt-3 mb-2">{item.title}</p>
+                <p class="text-stone-600 text-sm leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="max-w-4xl mt-10 flex items-start gap-3 border border-dashed border-stone-300 bg-stone-100/60 px-5 py-4">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="text-stone-400 shrink-0 mt-0.5"><path d="M12 9v4m0 4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <p class="text-stone-500 text-xs leading-relaxed">
+        These measures reflect standard HKC-compliant yard practice. Confirm with the yard team that
+        each item matches Rudra's actual protocols, and add or remove items as needed, before this
+        page goes live.
+      </p>
+    </div>
+  </div>
+</section>
+
+<script>
+  const buttons = Array.from(document.querySelectorAll('.measure-tab-btn')) as HTMLElement[]
+  const indicators = Array.from(document.querySelectorAll('.measure-tab-indicator')) as HTMLElement[]
+  const panels = Array.from(document.querySelectorAll('.measure-tab-panel')) as HTMLElement[]
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const key = btn.dataset.tab
+
+      buttons.forEach((b) => b.dataset.active = String(b === btn))
+      indicators.forEach((ind, i) => ind.dataset.active = String(buttons[i] === btn))
+      panels.forEach((p) => {
+        p.style.display = p.dataset.panel === key ? '' : 'none'
+      })
+    })
+  })
+</script>

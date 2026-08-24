@@ -1,0 +1,33 @@
+---
+import Navbar from "../components/Navbar.astro";
+import PageHeader from "../components/PageHeader.astro";
+import ProcessSteps from "../components/process/ProcessSteps.astro";
+import ProcessCallout from "../components/process/ProcessCallout.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
+---
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Recycling Process | Rudra Green Ship Recycling Group</title>
+    </head>
+    <body class="bg-paper">
+        <Navbar />
+        <PageHeader
+            eyebrow="Green Ship Recycling"
+            title="A controlled, HKC-compliant recycling process."
+            desc="Every vessel that enters the Alang yard moves through a defined sequence — from pre-arrival documentation to final material recovery — designed around Hong Kong Convention standards."
+            crumb="Recycling Process"
+            meta={[
+                { label: "Process stages", value: "6" },
+                { label: "Standard", value: "HKC Compliant" },
+                { label: "Location", value: "Alang, Gujarat" },
+            ]}
+        />
+        <ProcessSteps />
+        <ProcessCallout />
+        <Footer />
+    </body>
+</html>

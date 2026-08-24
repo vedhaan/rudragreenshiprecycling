@@ -1,0 +1,36 @@
+---
+const details = [
+  { label: 'Registered Office', value: 'Alang, Bhavnagar, Gujarat, India' },
+  { label: 'Phone', value: null },
+  { label: 'General Inquiries', value: 'works@rudragreenshiprecycling.com', href: 'mailto:works@rudragreenshiprecycling.com' },
+  { label: 'Investor Relations', value: 'investors@rudragreenshiprecycling.com', href: 'mailto:investors@rudragreenshiprecycling.com' },
+]
+---
+
+<div class="relative bg-paper border border-stone-300 p-7">
+  <span class="absolute top-2.5 left-2.5 w-1.5 h-1.5 rounded-full bg-stone-300"></span>
+  <span class="absolute top-2.5 right-2.5 w-1.5 h-1.5 rounded-full bg-stone-300"></span>
+  <span class="absolute bottom-2.5 left-2.5 w-1.5 h-1.5 rounded-full bg-stone-300"></span>
+  <span class="absolute bottom-2.5 right-2.5 w-1.5 h-1.5 rounded-full bg-stone-300"></span>
+
+  <p class="eyebrow text-rust-500 mb-5">Contact Details</p>
+  <dl>
+    {details.map((d, i) => (
+      <div class:list={['py-4', i !== 0 && 'border-t border-dashed border-stone-300']}>
+        <dt class="font-mono text-[11px] text-stone-500 mb-1.5">{d.label}</dt>
+        {d.value ? (
+          d.href ? (
+            <dd><a href={d.href} class="font-semibold text-navy-950 hover:text-rust-600 transition-colors break-words text-sm">{d.value}</a></dd>
+          ) : (
+            <dd class="font-semibold text-navy-950 text-sm break-words">{d.value}</dd>
+          )
+        ) : (
+          <dd class="flex items-center gap-2">
+            <span class="text-stone-400 text-sm">—</span>
+            <span class="eyebrow text-rust-500 bg-rust-500/10 border border-rust-500/25 px-2 py-0.5 rounded-full">provide</span>
+          </dd>
+        )}
+      </div>
+    ))}
+  </dl>
+</div>

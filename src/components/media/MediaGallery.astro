@@ -1,0 +1,168 @@
+---
+const categories = ['All', 'Yard', 'Activities', 'Certifications']
+
+const items = [
+  { src: '/img/hero-shipyard.jpg', category: 'Yard', caption: 'Alang yard operations' },
+  { src: '/img/strength/yard.jpg', category: 'Yard', caption: 'State of the art yard facilities' },
+  { src: '/img/activities/csr.jpg', category: 'Activities', caption: 'CSR initiatives' },
+  { src: '/img/activities/environmental-care.jpg', category: 'Activities', caption: 'Environmental care programs' },
+  { src: '/img/activities/cultural.jpg', category: 'Activities', caption: 'Cultural activities' },
+  { src: '/img/activities/training-safety.jpg', category: 'Activities', caption: 'Training & safety sessions' },
+  { src: '/img/certificate/iso140012015.jpg', category: 'Certifications', caption: 'ISO 14001:2015' },
+  { src: '/img/certificate/iso90012015.jpg', category: 'Certifications', caption: 'ISO 9001:2015' },
+]
+
+const counts = categories.map((c) => ({
+  key: c,
+  count: c === 'All' ? items.length : items.filter((i) => i.category === c).length,
+}))
+---
+
+<section class="relative bg-paper py-4 lg:py-8 overflow-hidden">
+  <div class="max-w-[1800px] mx-auto px-6 sm:px-10 xl:px-16 2xl:px-20">
+
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-12 lg:mb-16">
+      <div class="max-w-xl">
+        <p class="eyebrow text-sage-600 mb-5">Media library</p>
+        <h2 class="font-display font-semibold text-3xl lg:text-4xl text-navy-950 leading-[1.1]">
+          Yard, activities, and certifications.
+        </h2>
+      </div>
+
+      <div class="flex flex-wrap gap-2">
+        {counts.map((c, i) => (
+          <button
+            type="button"
+            class="media-filter-btn flex items-center gap-2 px-4 py-2 text-sm font-medium border border-stone-300 text-stone-600 hover:border-navy-900 hover:text-navy-900 transition-colors duration-200 data-[active=true]:bg-navy-950 data-[active=true]:border-navy-950 data-[active=true]:text-white"
+            data-filter={c.key}
+            data-active={i === 0 ? 'true' : 'false'}
+          >
+            {c.key}
+            <span class="font-mono text-[10px] opacity-60">{c.count}</span>
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <div id="media-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 xl:gap-5">
+      {items.map((item) => (
+        <button
+          type="button"
+          class="media-item group relative aspect-square overflow-hidden bg-stone-200 min-w-0 transition-all duration-300 ease-out"
+          data-category={item.category}
+          data-src={item.src}
+          data-caption={item.caption}
+        >
+          <img src={item.src} alt={item.caption} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-navy-950/70 via-navy-950/0 to-navy-950/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <span class="absolute bottom-3 left-3 right-3 text-white text-xs font-medium opacity-0 -translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 truncate">
+            {item.caption}
+          </span>
+          <span class="absolute top-3 right-3 flex items-center justify-center w-7 h-7 rounded-full bg-white/15 backdrop-blur-sm text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </button>
+      ))}
+    </div>
+
+    <p id="media-empty-state" class="hidden text-stone-400 text-sm py-12 text-center">No items in this category yet.</p>
+  </div>
+</section>
+
+<div id="media-lightbox" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 sm:p-8">
+  <div id="media-lightbox-backdrop" class="absolute inset-0 bg-navy-950/85 backdrop-blur-sm"></div>
+  <div class="relative max-w-4xl w-full max-h-[88vh] flex flex-col items-center">
+    <button id="media-lightbox-close" type="button" aria-label="Close" class="absolute -top-12 right-0 text-white/70 hover:text-white transition-colors">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <img id="media-lightbox-img" src="" alt="" class="max-w-full max-h-[75vh] object-contain" />
+    <p id="media-lightbox-caption" class="mt-4 text-white/80 text-sm font-mono"></p>
+  </div>
+</div>
+
+<style>
+  .media-item.is-hiding {
+    opacity: 0;
+    transform: scale(0.92);
+    pointer-events: none;
+  }
+  .media-item.is-entering {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .media-item { transition: none !important; }
+  }
+</style>
+
+<script>
+  const filterBtns = Array.from(document.querySelectorAll('.media-filter-btn')) as HTMLElement[]
+  const items = Array.from(document.querySelectorAll('.media-item')) as HTMLElement[]
+  const emptyState = document.getElementById('media-empty-state') as HTMLElement
+  const TRANSITION_MS = 280
+
+  function applyFilter(filter: string) {
+    const toHide = items.filter((item) => item.style.display !== 'none' && !(filter === 'All' || item.dataset.category === filter))
+    const toShow = items.filter((item) => item.style.display === 'none' && (filter === 'All' || item.dataset.category === filter))
+
+    // phase 1: fade out items leaving the set
+    toHide.forEach((item) => item.classList.add('is-hiding'))
+
+    window.setTimeout(() => {
+      toHide.forEach((item) => {
+        item.style.display = 'none'
+        item.classList.remove('is-hiding')
+      })
+
+      // phase 2: reveal new items, staggered
+      toShow.forEach((item, i) => {
+        item.style.display = ''
+        item.classList.add('is-entering')
+        // force reflow so the transition actually plays
+        void item.offsetWidth
+        window.setTimeout(() => item.classList.remove('is-entering'), i * 35)
+      })
+
+      const visibleCount = items.filter((i) => i.style.display !== 'none').length
+      emptyState.classList.toggle('hidden', visibleCount > 0)
+    }, toHide.length > 0 ? TRANSITION_MS : 0)
+  }
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter!
+      filterBtns.forEach((b) => b.dataset.active = String(b === btn))
+      applyFilter(filter)
+    })
+  })
+
+  const lightbox = document.getElementById('media-lightbox') as HTMLElement
+  const backdrop = document.getElementById('media-lightbox-backdrop') as HTMLElement
+  const closeBtn = document.getElementById('media-lightbox-close') as HTMLElement
+  const lbImg = document.getElementById('media-lightbox-img') as HTMLImageElement
+  const lbCaption = document.getElementById('media-lightbox-caption') as HTMLElement
+
+  function openLightbox(src: string, caption: string) {
+    lbImg.src = src
+    lbImg.alt = caption
+    lbCaption.textContent = caption
+    lightbox.classList.remove('hidden')
+    lightbox.classList.add('flex')
+    document.body.style.overflow = 'hidden'
+  }
+  function closeLightbox() {
+    lightbox.classList.add('hidden')
+    lightbox.classList.remove('flex')
+    document.body.style.overflow = ''
+    lbImg.src = ''
+  }
+
+  items.forEach((item) => {
+    item.addEventListener('click', () => openLightbox(item.dataset.src!, item.dataset.caption!))
+  })
+  backdrop.addEventListener('click', closeLightbox)
+  closeBtn.addEventListener('click', closeLightbox)
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeLightbox()
+  })
+</script>

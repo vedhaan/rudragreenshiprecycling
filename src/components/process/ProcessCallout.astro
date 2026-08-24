@@ -1,0 +1,63 @@
+---
+const links = [
+  {
+    label: 'Health & Safety Measures',
+    href: '/measures',
+    desc: 'How worker health and yard safety are maintained through every stage.',
+    icon: 'M12 2l7 3v6c0 5-3.4 8.7-7 10-3.6-1.3-7-5-7-10V5l7-3z M9 12l2 2 4-4',
+  },
+  {
+    label: 'Hong Kong Convention',
+    href: '/convention',
+    desc: 'The international framework this process is built to comply with.',
+    icon: 'M4 4v16h16 M8 16l4-6 3 3 4-6',
+  },
+]
+---
+
+<section class="relative bg-navy-950 py-20 lg:py-28 overflow-hidden mt-8">
+
+  <!-- layered panels, same language as PageHeader but subtler/darker context -->
+  <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+    <div class="absolute -left-24 top-[-15%] w-[45%] h-[140%] bg-white/[0.025] [clip-path:polygon(0_0,70%_0,100%_100%,0_100%)]"></div>
+    <div class="absolute -left-8 top-[-5%] w-[28%] h-[120%] bg-rust-500/[0.05] [clip-path:polygon(0_0,65%_0,95%_100%,0_100%)]"></div>
+    <span class="hidden lg:block absolute top-8 left-8 w-5 h-5 border-t-2 border-l-2 border-white/10"></span>
+    <span class="hidden lg:block absolute bottom-8 left-8 w-5 h-5 border-b-2 border-l-2 border-white/10"></span>
+  </div>
+
+  <div class="relative max-w-[1800px] mx-auto px-6 sm:px-10 xl:px-16 2xl:px-20">
+    <div class="grid lg:grid-cols-[0.7fr_1fr] gap-12 items-center">
+      <div>
+        <div class="flex items-center gap-3 mb-5">
+          <span class="w-8 h-px bg-rust-500 shrink-0"></span>
+          <p class="eyebrow text-paper">Related</p>
+        </div>
+        <h2 class="font-display font-semibold text-2xl lg:text-3xl text-white leading-[1.15] max-w-sm">
+          Process is only part of the standard.
+        </h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-5">
+        {links.map((l) => (
+          <a href={l.href} class="group relative border border-white/15 bg-white/[0.02] p-7 hover:border-rust-500/50 hover:bg-white/[0.05] transition-all duration-300 min-w-0 overflow-hidden">
+            <span class="absolute top-0 left-0 h-0.5 w-0 bg-rust-500 transition-all duration-300 ease-out group-hover:w-full"></span>
+
+            <span class="flex items-center justify-center w-11 h-11 rounded-full border border-white/20 mb-6 transition-colors duration-300 group-hover:border-rust-500/60 group-hover:bg-rust-500/10">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" class="text-white/70 transition-colors duration-300 group-hover:text-rust-400">
+                <path d={l.icon} stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+
+            <div class="flex items-center justify-between gap-3 mb-3">
+              <span class="font-display font-semibold text-white text-lg">{l.label}</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="text-white/40 shrink-0 transition-all duration-300 group-hover:text-rust-400 group-hover:translate-x-1">
+                <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <p class="text-stone-300 text-sm leading-relaxed">{l.desc}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
