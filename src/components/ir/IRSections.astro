@@ -1,44 +1,53 @@
 ---
 import DocRow from './DocRow.astro'
 import FactGrid from './FactGrid.astro'
+import {
+  overviewFacts, overviewDocs,
+  governanceRoles, governanceCommittees, governanceDocs,
+  policyDocs, financialDocs, regulatoryDocs, offerDocs,
+  grievanceFacts, statutoryDocs,
+} from '../../data/investor-relations.js'
 ---
 <div class="max-w-4xl">
 
   <section id="ir-overview" data-title="Company Overview" class="scroll-mt-28 pb-16 mb-16 border-b border-stone-300">
     <div class="flex items-end justify-between gap-4 mb-6 flex-wrap">
       <h2 class="font-display font-semibold text-2xl text-navy-950">I. Company Overview</h2>
-      <span class="font-mono text-xs text-stone-400 bg-white border border-stone-200 px-3 py-1 rounded-full">Reg. 46(2)(a)·(aa) · Sec. 12</span>
+      <span class="font-mono text-xs text-stone-400 bg-white border border-stone-200 px-3 py-1 rounded-full">Reg. 46(2)(a) and (aa), Sec. 12</span>
     </div>
-    <p class="text-stone-600 text-sm leading-relaxed mb-6 max-w-2xl">Baseline company, registration, and constitutional details — the minimum every visitor and regulator should find on landing.</p>
-    <FactGrid items={[
-      { label: 'Nature of Business', value: 'Ship recycling & dismantling' },
-      { label: 'Parent Group', value: 'Rudra Global (est. 1991)' },
-      { label: 'Registered Office', value: 'Alang, Bhavnagar, Gujarat', flag: 'confirm' },
-      { label: 'CIN', value: '—', flag: 'provide' },
-    ]} />
+    <p class="text-stone-600 text-sm leading-relaxed mb-6 max-w-2xl">Baseline company, registration, and constitutional details.</p>
+    <FactGrid items={overviewFacts} />
     <div class="mt-5 bg-white border border-stone-200">
-      <DocRow name="Memorandum of Association (MOA)" desc="Object clause & constitutional scope of the company" provision="Reg. 46(2)(aa)" status="pending" />
-      <DocRow name="Articles of Association (AOA)" desc="Internal governance rules of the company" provision="Reg. 46(2)(aa)" status="pending" />
-      <DocRow name="Name change history" desc="Old & new name, if changed within the last year" provision="Reg. 46(2)(p)" status="na" />
+      {overviewDocs.map((d) => <DocRow {...d} />)}
+    </div>
+  </section>
+
+  <section id="ir-statutory" data-title="Statutory Registrations" class="scroll-mt-28 pb-16 mb-16 border-b border-stone-300">
+    <div class="flex items-end justify-between gap-4 mb-6 flex-wrap">
+      <h2 class="font-display font-semibold text-2xl text-navy-950">Statutory Registrations & Certifications</h2>
+      <span class="font-mono text-xs text-stone-400 bg-white border border-stone-200 px-3 py-1 rounded-full">{statutoryDocs.length} documents</span>
+    </div>
+    <div class="bg-white border border-stone-200">
+      {statutoryDocs.map((d) => <DocRow {...d} />)}
     </div>
   </section>
 
   <section id="ir-governance" data-title="Board & Governance" class="scroll-mt-28 pb-16 mb-16 border-b border-stone-300">
     <div class="flex items-end justify-between gap-4 mb-6 flex-wrap">
       <h2 class="font-display font-semibold text-2xl text-navy-950">II. Board & Governance</h2>
-      <span class="font-mono text-xs text-stone-400 bg-white border border-stone-200 px-3 py-1 rounded-full">Reg. 46(2)(ab)–(d),(i) · Reg. 30(5)</span>
+      <span class="font-mono text-xs text-stone-400 bg-white border border-stone-200 px-3 py-1 rounded-full">Reg. 46(2)(ab) to (d), (i), Reg. 30(5)</span>
     </div>
-    <p class="text-stone-600 text-sm leading-relaxed mb-6 max-w-2xl">Board composition, independence terms, and committee structure. Profiles below are structural placeholders — real names, DIN, and directorship details to be supplied by the company.</p>
+    <p class="text-stone-600 text-sm leading-relaxed mb-6 max-w-2xl">Board composition, independence terms, and committee structure. Profiles below are structural placeholders.</p>
 
     <div class="grid sm:grid-cols-3 gap-4 mb-6">
-      {['Chairman & Managing Director', 'Independent Director', 'Whole-time Director'].map((role) => (
+      {governanceRoles.map((role) => (
         <div class="bg-white border border-stone-200 p-5">
           <span class="flex items-center justify-center w-11 h-11 rounded-full border border-dashed border-stone-300 mb-4">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="text-stone-400"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
           <p class="font-semibold text-navy-950 text-sm mb-1">[ Director name ]</p>
           <p class="text-rust-500 text-xs font-medium mb-3">{role}</p>
-          <p class="text-stone-400 text-xs leading-relaxed">Other directorships — to be added<br/>DIN — to be added</p>
+          <p class="text-stone-400 text-xs leading-relaxed">Other directorships: to be added<br/>DIN: to be added</p>
         </div>
       ))}
     </div>
@@ -53,11 +62,11 @@ import FactGrid from './FactGrid.astro'
           </tr>
         </thead>
         <tbody>
-          {['Audit Committee', 'Nomination & Remuneration Committee', 'Stakeholders Relationship Committee', 'CSR Committee'].map((c) => (
+          {governanceCommittees.map((c) => (
             <tr class="border-b border-stone-100 last:border-0">
-              <td class="px-5 py-3.5 font-semibold text-navy-950">{c}</td>
-              <td class="px-5 py-3.5 text-stone-400">—</td>
-              <td class="px-5 py-3.5 text-stone-400">—</td>
+              <td class="px-5 py-3.5 font-semibold text-navy-950">{c.name}</td>
+              <td class="px-5 py-3.5 text-stone-400">{c.chair}</td>
+              <td class="px-5 py-3.5 text-stone-400">{c.members}</td>
             </tr>
           ))}
         </tbody>
@@ -65,47 +74,28 @@ import FactGrid from './FactGrid.astro'
     </div>
 
     <div class="bg-white border border-stone-200">
-      <DocRow name="Terms & conditions of appointment — Independent Directors" provision="Reg. 46(2)(b)" status="pending" />
-      <DocRow name="Code of Conduct — Board & senior management" provision="Reg. 46(2)(d)" status="pending" />
-      <DocRow name="Familiarisation programme — Independent Directors" desc="Sessions attended, hours logged (annual & cumulative)" provision="Reg. 46(2)(i)" status="pending" />
-      <DocRow name="Criteria for payment to non-executive directors" desc="Required only if not already disclosed in the Annual Report" provision="Reg. 46(2)(f)" status="conditional" />
-      <DocRow name="KMP designated for materiality determination" desc="Name & contact of the officer authorised to assess materiality of events" provision="Reg. 30(5) / 46(2)(v)" status="pending" />
+      {governanceDocs.map((d) => <DocRow {...d} />)}
     </div>
   </section>
 
   <section id="ir-policies" data-title="Policies & Codes" class="scroll-mt-28 pb-16 mb-16 border-b border-stone-300">
     <div class="flex items-end justify-between gap-4 mb-6 flex-wrap">
       <h2 class="font-display font-semibold text-2xl text-navy-950">III. Policies & Codes</h2>
-      <span class="font-mono text-xs text-stone-400 bg-white border border-stone-200 px-3 py-1 rounded-full">10 documents</span>
+      <span class="font-mono text-xs text-stone-400 bg-white border border-stone-200 px-3 py-1 rounded-full">{policyDocs.length} documents</span>
     </div>
     <p class="text-stone-600 text-sm leading-relaxed mb-6 max-w-2xl">Board-approved policy documents, hosted as downloadable PDFs once finalised.</p>
     <div class="bg-white border border-stone-200">
-      <DocRow name="Vigil Mechanism / Whistle Blower Policy" provision="Reg. 46(2)(e)" status="pending" />
-      <DocRow name="Policy on Related Party Transactions" provision="Reg. 46(2)(g)" status="pending" />
-      <DocRow name="Policy for Determining Material Subsidiaries" provision="Reg. 46(2)(h)" status="pending" />
-      <DocRow name="Archival Policy" provision="Reg. 30(8)" status="pending" />
-      <DocRow name="Policy on Determination of Materiality of Events" provision="Reg. 30(4)(ii) / 46(2)(u)" status="pending" />
-      <DocRow name="Dividend Distribution Policy" desc="Applicable once among the top 1,000 listed entities by market cap" provision="Reg. 43A / 46(2)(y)" status="conditional" />
-      <DocRow name="Insider Trading Code / Policy" provision="SEBI (PIT) Reg. 8(1)" status="pending" />
-      <DocRow name="Qualification & Remuneration Policy — Directors / KMP" provision="Companies Act, Sec. 178" status="pending" />
-      <DocRow name="CSR Policy & Approved Projects" provision="CSR Policy Rules 2014, Rule 9" status="pending" />
-      <DocRow name="Employee Benefit Scheme Documents" desc="Excludes commercially sensitive information, per board-approved redactions" provision="Reg. 46(2)(za)" status="pending" />
+      {policyDocs.map((d) => <DocRow {...d} />)}
     </div>
   </section>
 
   <section id="ir-financials" data-title="Financials & Reports" class="scroll-mt-28 pb-16 mb-16 border-b border-stone-300">
     <div class="flex items-end justify-between gap-4 mb-6 flex-wrap">
       <h2 class="font-display font-semibold text-2xl text-navy-950">IV. Financial Results & Reports</h2>
-      <span class="font-mono text-xs text-stone-400 bg-white border border-stone-200 px-3 py-1 rounded-full">Reg. 46(2)(l) · Reg. 34 · Sec. 92(3)</span>
+      <span class="font-mono text-xs text-stone-400 bg-white border border-stone-200 px-3 py-1 rounded-full">Reg. 46(2)(l), Reg. 34, Sec. 92(3)</span>
     </div>
     <div class="bg-white border border-stone-200">
-      <DocRow name="Standalone audited financials — last 3 years" provision="ICDR Sch. VI, Para 11(I)(A)(ii)" status="pending" href={null} />
-      <DocRow name="Material subsidiary financials — last 3 years" desc="No subsidiary as of date — retained for future use" provision="ICDR Sch. VI, Para 11(I)(A)(ii)" status="na" />
-      <DocRow name="Annual Report + Notice of AGM" desc="Balance sheet, P&L, Director's Report, Corporate Governance Report" provision="Reg. 46(2)(l) / 34(1)(a)" status="pending" />
-      <DocRow name="Annual Return" provision="Sec. 92(3) / Reg. 46(2)(z)" status="pending" />
-      <DocRow name="Secretarial Compliance Report" provision="Reg. 24A(2) / 46(2)(t)" status="pending" />
-      <DocRow name="Related Party Transactions — disclosure" provision="Reg. 23(9)" status="pending" />
-      <DocRow name="Closure of register of members / debenture holders" provision="Companies (Mgmt. & Admin.) Rules, r.10" status="pending" />
+      {financialDocs.map((d) => <DocRow {...d} />)}
     </div>
   </section>
 
@@ -116,7 +106,7 @@ import FactGrid from './FactGrid.astro'
     </div>
     <div class="bg-white border border-dashed border-stone-300 p-10 text-center">
       <svg width="32" height="32" viewBox="0 0 24 24" fill="none" class="text-stone-300 mx-auto mb-4"><path d="M4 20V10M10 20V4M16 20V13M22 20V7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <p class="font-semibold text-navy-950 text-sm mb-2">Quarterly shareholding pattern — to be published</p>
+      <p class="font-semibold text-navy-950 text-sm mb-2">Quarterly shareholding pattern, to be published</p>
       <p class="text-stone-500 text-xs max-w-md mx-auto leading-relaxed">Category-wise holding (Promoter, Public, FII/DII, etc.) will appear here as a downloadable table each quarter, per the standard SEBI format.</p>
     </div>
   </section>
@@ -124,14 +114,10 @@ import FactGrid from './FactGrid.astro'
   <section id="ir-regulatory" data-title="Regulatory Disclosures" class="scroll-mt-28 pb-16 mb-16 border-b border-stone-300">
     <div class="flex items-end justify-between gap-4 mb-6 flex-wrap">
       <h2 class="font-display font-semibold text-2xl text-navy-950">VI. Regulatory Disclosures</h2>
-      <span class="font-mono text-xs text-stone-400 bg-white border border-stone-200 px-3 py-1 rounded-full">Reg. 46(2)(n)–(x)</span>
+      <span class="font-mono text-xs text-stone-400 bg-white border border-stone-200 px-3 py-1 rounded-full">Reg. 46(2)(n) to (x)</span>
     </div>
     <div class="bg-white border border-stone-200">
-      <DocRow name="Statement of deviation (quarterly)" provision="Reg. 46(2)(x) / Reg. 32" status="pending" />
-      <DocRow name="Credit rating — outstanding instruments" provision="Reg. 46(2)(r)" status="conditional" />
-      <DocRow name="Agreements with media companies & associates" provision="Reg. 46(2)(n)" status="conditional" />
-      <DocRow name="Analyst / institutional investor meet schedule" provision="Reg. 46(2)(o)" status="conditional" />
-      <DocRow name="Earnings-call recordings & transcripts" desc="Audio within 24h · video within 48h · transcript within 5 working days" provision="Reg. 46(2)(oa)" status="conditional" />
+      {regulatoryDocs.map((d) => <DocRow {...d} />)}
     </div>
   </section>
 
@@ -142,31 +128,19 @@ import FactGrid from './FactGrid.astro'
     </div>
     <div class="flex items-start gap-3 border border-dashed border-stone-300 bg-stone-100/60 px-5 py-4 mb-6">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="text-stone-400 shrink-0 mt-0.5"><path d="M12 9v4m0 4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <p class="text-stone-500 text-xs leading-relaxed">This section only applies during an active public issue — from RHP filing through bid/offer closing, retained per SEBI's rules thereafter.</p>
+      <p class="text-stone-500 text-xs leading-relaxed">This section only applies during an active public issue, from RHP filing through bid or offer closing, retained per SEBI's rules thereafter.</p>
     </div>
     <div class="bg-white border border-stone-200">
-      <DocRow name="DRHP / RHP / Prospectus" provision="Regulation 26" status="conditional" />
-      <DocRow name="Industry Report" provision="AIBI guidance, Oct 2021" status="conditional" />
-      <DocRow name="Monitoring Agency Report" desc="Filed within 45 days of each quarter-end, post-issue" provision="Regulation 41" status="conditional" />
-      <DocRow name="Outstanding overdues to material creditors" provision="Sch. VI, Para 12(A)(2)(iii)" status="conditional" />
-      <DocRow name="Group company financial line items (top 5)" provision="Sch. VI, Para 13(A)" status="conditional" />
-      <DocRow name="Material contracts & documents" desc="Available for inspection from RHP filing through bid/offer close" provision="Sch. VI, Para 18(3)" status="conditional" />
+      {offerDocs.map((d) => <DocRow {...d} />)}
     </div>
   </section>
 
   <section id="ir-grievance" data-title="Investor Grievance" class="scroll-mt-28">
     <div class="flex items-end justify-between gap-4 mb-6 flex-wrap">
       <h2 class="font-display font-semibold text-2xl text-navy-950">VIII. Investor Grievance & Contact</h2>
-      <span class="font-mono text-xs text-stone-400 bg-white border border-stone-200 px-3 py-1 rounded-full">Reg. 46(2)(j)–(k) · Sec. 12</span>
+      <span class="font-mono text-xs text-stone-400 bg-white border border-stone-200 px-3 py-1 rounded-full">Reg. 46(2)(j) to (k), Sec. 12</span>
     </div>
-    <p class="text-stone-600 text-sm leading-relaxed mb-6 max-w-2xl">The fastest path for a shareholder to raise, and get resolution on, a grievance — kept separate from general enquiries.</p>
-    <FactGrid items={[
-      { label: 'Grievance Email', value: 'investors@rudragreenshiprecycling.com', href: 'mailto:investors@rudragreenshiprecycling.com' },
-      { label: 'Designated Grievance Officer', value: '[ Name, designation ]', flag: 'to be added' },
-      { label: 'Registrar & Transfer Agent (RTA)', value: '[ Name, contact ]', flag: 'to be added' },
-      { label: 'IEPF Nodal Officer', value: '[ Name, contact ]', flag: 'to be added' },
-      { label: 'Registered Office', value: 'Alang, Bhavnagar, Gujarat', flag: 'confirm' },
-      { label: 'CIN', value: '—', flag: 'provide' },
-    ]} />
+    <p class="text-stone-600 text-sm leading-relaxed mb-6 max-w-2xl">The fastest path for a shareholder to raise, and get resolution on, a grievance, kept separate from general enquiries.</p>
+    <FactGrid items={grievanceFacts} />
   </section>
 </div>
