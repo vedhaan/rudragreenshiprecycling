@@ -1,11 +1,11 @@
 ---
 const certs = [
-  { name: 'ISO 14001:2015', sub: 'Environmental Management', img: '/img/certificate/iso140012015.jpg' },
-  { name: 'ISO 9001:2015', sub: 'Quality Management', img: '/img/certificate/iso90012015.jpg' },
-  { name: 'ISO 18001:2007', sub: 'Occupational Health & Safety', img: '/img/certificate/iso180012007.jpg' },
-  { name: 'ISO 30000:2009', sub: 'Ship Recycling Management', img: '/img/certificate/iso300002009.jpg' },
-  { name: 'Compliance', sub: 'HKC Regulatory Compliance', img: '/img/certificate/compliance.jpg' },
-  { name: 'Pollution Control', sub: 'Environmental Clearance', img: '/img/certificate/pollution_control.jpg' },
+  { name: 'ISO 14001:2015', sub: 'Environmental Management', file: '/documents/certifications/ISO 14001_20.01.2029.pdf' },
+  { name: 'ISO 9001:2015', sub: 'Quality Management', file: '/documents/certifications/ISO 9001_20.01.2029.pdf' },
+  { name: 'ISO 45001', sub: 'Occupational Health & Safety', file: '/documents/certifications/ISO 45001_20.01.2029.pdf' },
+  { name: 'ISO 30001', sub: 'Ship Recycling Management', file: '/documents/certifications/ISO 30001_27.01.2027.pdf' },
+  { name: 'ISO 50001', sub: 'Energy Management', file: '/documents/certifications/ISO 50001_16.04.2027.pdf' },
+  { name: 'ISO 55001', sub: 'Asset Management', file: '/documents/certifications/ISO 55001_16.04.2027.pdf' },
 ]
 ---
 
@@ -15,7 +15,6 @@ const certs = [
   </div>
 
   <div class="relative max-w-[1800px] mx-auto px-6 sm:px-10 xl:px-16 2xl:px-20">
-
     <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-14 lg:mb-20">
       <div class="max-w-xl">
         <div class="flex items-center gap-3 mb-6">
@@ -42,31 +41,31 @@ const certs = [
       {certs.map((cert, i) => (
         <button
           type="button"
-          class="cert-trigger group relative bg-paper border border-stone-200 flex flex-col text-left w-[260px] shrink-0 lg:w-auto overflow-hidden snap-start
+          class="cert-trigger group relative bg-paper border border-stone-200 flex flex-col text-left w-[220px] shrink-0 lg:w-auto overflow-hidden snap-start
                  transition-all duration-300 ease-out
-                 hover:-translate-y-1 hover:border-navy-900/20 hover:shadow-[0_4px_10px_rgba(14,33,66,0.05),0_18px_36px_rgba(14,33,66,0.09)]
+                 hover:-translate-y-1 hover:border-navy-900/20 hover:shadow-[0_4px_10px_rgba(14,33,66,0.05),0_18px_36px_-16px_rgba(14,33,66,0.16)]
                  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rust-500 focus-visible:ring-offset-2"
-          data-img={cert.img}
+          data-file={cert.file}
           data-name={cert.name}
           data-sub={cert.sub}
         >
-          <span class="absolute top-3 left-3 z-10 font-mono text-[0.65rem] text-stone-400">{String(i + 1).padStart(2, '0')}</span>
+          <span class="absolute top-3 left-3 z-10 font-mono text-[0.65rem] text-white/90 bg-navy-950/60 backdrop-blur-sm px-2 py-0.5">{String(i + 1).padStart(2, '0')}</span>
 
-          <div class="relative h-64 xl:h-72 flex items-center justify-center bg-white border-b border-stone-200 p-5">
-            <img
-              src={cert.img}
-              alt={cert.name}
-              class="h-full w-full object-contain grayscale-[35%] group-hover:grayscale-0 transition-all duration-300"
-            />
-            <span class="absolute inset-0 border border-transparent group-hover:border-rust-500/25 transition-colors duration-300"></span>
-            <span class="absolute bottom-3 right-3 flex items-center justify-center w-9 h-9 bg-navy-950/80 backdrop-blur-sm text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
+          <div class="relative h-56 xl:h-64 bg-stone-100 border-b border-stone-200 overflow-hidden flex items-center justify-center">
+            <!-- skeleton shown until the PDF renders -->
+            <div class="cert-skeleton absolute inset-0 flex items-center justify-center bg-stone-100">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" class="text-stone-300 animate-pulse"><path d="M9 3h9a1 1 0 011 1v16a1 1 0 01-1 1H6a1 1 0 01-1-1V7l4-4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M9 3v4H5" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            </div>
+            <canvas class="cert-canvas relative z-10 max-w-full max-h-full opacity-0 transition-opacity duration-500 shadow-[0_2px_8px_rgba(14,33,66,0.12)]"></canvas>
           </div>
 
           <div class="p-5 flex flex-col gap-1">
             <h3 class="font-display font-semibold text-base text-navy-950 leading-snug">{cert.name}</h3>
             <p class="text-stone-500 text-xs leading-snug">{cert.sub}</p>
+            <span class="flex items-center gap-1.5 mt-3 text-xs font-medium text-navy-900 opacity-0 -translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+              View Certificate
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
           </div>
 
           <span class="absolute bottom-0 left-0 h-0.5 w-0 bg-rust-500 group-hover:w-full transition-all duration-300"></span>
@@ -78,63 +77,109 @@ const certs = [
   </div>
 </section>
 
-<!-- MODAL -->
 <div id="cert-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 sm:p-8">
   <div id="cert-modal-backdrop" class="absolute inset-0 bg-navy-950/80 backdrop-blur-sm"></div>
-
-  <div class="relative bg-white max-w-3xl w-full max-h-[88vh] flex flex-col overflow-hidden">
+  <div class="relative bg-white max-w-3xl w-full h-[85vh] flex flex-col overflow-hidden">
     <div class="flex items-center justify-between px-6 py-4 border-b border-stone-200 shrink-0">
       <div>
         <h3 id="cert-modal-name" class="font-display font-semibold text-lg text-navy-950"></h3>
         <p id="cert-modal-sub" class="text-stone-500 text-xs"></p>
       </div>
-      <button id="cert-modal-close" type="button" aria-label="Close" class="p-2 text-stone-500 hover:text-navy-950 transition-colors">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-      </button>
+      <div class="flex items-center gap-2">
+        <a id="cert-modal-open-tab" href="#" target="_blank" rel="noopener" class="flex items-center gap-1.5 text-xs font-medium text-navy-800 border border-stone-300 px-3 py-2 hover:border-navy-900 transition-colors">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Open in new tab
+        </a>
+        <button id="cert-modal-close" type="button" aria-label="Close" class="p-2 text-stone-500 hover:text-navy-950 transition-colors">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
     </div>
-    <div class="flex-1 overflow-auto bg-paper p-6 flex items-center justify-center">
-      <img id="cert-modal-img" src="" alt="" class="max-w-full max-h-full object-contain" />
+    <div class="flex-1 bg-stone-100">
+      <iframe id="cert-modal-frame" src="" title="Certificate document" class="w-full h-full border-0"></iframe>
     </div>
   </div>
 </div>
 
+<style>
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .scrollbar-hide { scrollbar-width: none; -ms-overflow-style: none; }
+</style>
+
 <script>
+  import * as pdfjsLib from 'pdfjs-dist'
+  import pdfjsWorkerUrl from 'pdfjs-dist/build/pdf.worker.mjs?url'
+
+  pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsWorkerUrl
+
+  async function renderThumbnail(card: HTMLElement) {
+    const file = card.dataset.file
+    const canvas = card.querySelector('.cert-canvas') as HTMLCanvasElement
+    const skeleton = card.querySelector('.cert-skeleton') as HTMLElement
+    if (!file || !canvas) return
+
+    try {
+      const pdf = await pdfjsLib.getDocument(file).promise
+      const page = await pdf.getPage(1) // first page only
+      const viewport = page.getViewport({ scale: 1 })
+
+      // Render at a fixed target width for a crisp, consistent thumbnail,
+      // scaled proportionally so different page sizes/orientations still fit.
+      const targetWidth = 420
+      const scale = targetWidth / viewport.width
+      const scaledViewport = page.getViewport({ scale })
+
+      canvas.width = scaledViewport.width
+      canvas.height = scaledViewport.height
+      const ctx = canvas.getContext('2d')
+      if (!ctx) return
+
+      await page.render({ canvasContext: ctx, viewport: scaledViewport }).promise
+
+      canvas.classList.remove('opacity-0')
+      skeleton.classList.add('hidden')
+    } catch (err) {
+      // If rendering fails (corrupt file, unsupported PDF feature, etc.),
+      // leave the skeleton icon visible rather than showing a broken canvas.
+      console.warn('Certificate thumbnail render failed for', file, err)
+    }
+  }
+
+  document.querySelectorAll('.cert-trigger').forEach((card) => {
+    renderThumbnail(card as HTMLElement)
+  })
+
+  // modal logic, unchanged
   const modal = document.getElementById('cert-modal') as HTMLElement
   const backdrop = document.getElementById('cert-modal-backdrop') as HTMLElement
   const closeBtn = document.getElementById('cert-modal-close') as HTMLElement
-  const modalImg = document.getElementById('cert-modal-img') as HTMLImageElement
+  const frame = document.getElementById('cert-modal-frame') as HTMLIFrameElement
+  const openTab = document.getElementById('cert-modal-open-tab') as HTMLAnchorElement
   const modalName = document.getElementById('cert-modal-name') as HTMLElement
   const modalSub = document.getElementById('cert-modal-sub') as HTMLElement
 
-  function openModal(img: string, name: string, sub: string) {
-    modalImg.src = img
-    modalImg.alt = name
+  function openModal(file: string, name: string, sub: string) {
+    frame.src = file
+    openTab.href = file
     modalName.textContent = name
     modalSub.textContent = sub
     modal.classList.remove('hidden')
     modal.classList.add('flex')
     document.body.style.overflow = 'hidden'
   }
-
   function closeModal() {
     modal.classList.add('hidden')
     modal.classList.remove('flex')
     document.body.style.overflow = ''
-    modalImg.src = ''
+    frame.src = ''
   }
 
   document.querySelectorAll('.cert-trigger').forEach((btn) => {
     btn.addEventListener('click', () => {
-      const img = btn.getAttribute('data-img') || ''
-      const name = btn.getAttribute('data-name') || ''
-      const sub = btn.getAttribute('data-sub') || ''
-      openModal(img, name, sub)
+      openModal(btn.getAttribute('data-file') || '', btn.getAttribute('data-name') || '', btn.getAttribute('data-sub') || '')
     })
   })
-
   backdrop.addEventListener('click', closeModal)
   closeBtn.addEventListener('click', closeModal)
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeModal()
-  })
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal() })
 </script>
