@@ -32,6 +32,17 @@ export const governanceCommittees = [
 
 export const governanceRoles = ['Chairman & Managing Director', 'Independent Director', 'Whole-time Director']
 
+export const boardOfDirectors = [
+  { name: 'Ashok Gupta', role: 'Director', photo: '/img/team/ashok-gupta.jpg' },
+  { name: 'Sahil Gupta', role: 'Director', photo: '/img/team/sahil-gupta.jpg' },
+  { name: 'Shama Gupta', role: 'Director', photo: '/img/team/shama-gupta.jpg' },
+]
+
+export const seniorManagement = [
+  { name: 'Shrishti Gupta', role: 'Senior Management', photo: '/img/team/shrishti-gupta.jpg' },
+  { name: 'Sugandh Gupta', role: 'Senior Management', photo: '/img/team/sugandh-gupta.jpg' },
+]
+
 export const governanceDocs = [
   { name: 'Terms & conditions of appointment — Independent Directors', provision: 'Reg. 46(2)(b)', status: 'pending', href: null },
   { name: 'Code of Conduct — Board & senior management', provision: 'Reg. 46(2)(d)', status: 'pending', href: null },

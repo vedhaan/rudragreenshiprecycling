@@ -1,74 +1,163 @@
 ---
-import DocRow from './DocRow.astro'
-import FactGrid from './FactGrid.astro'
+import DocRow from "./DocRow.astro";
+import FactGrid from "./FactGrid.astro";
 import {
-  overviewFacts, overviewDocs,
-  governanceRoles, governanceCommittees, governanceDocs,
-  policyDocs, financialDocs, regulatoryDocs, offerDocs,
-  grievanceFacts, statutoryDocs,
-} from '../../data/investor-relations.js'
+  overviewFacts,
+  overviewDocs,
+  boardOfDirectors,
+  seniorManagement,
+  governanceCommittees,
+  governanceDocs,
+  policyDocs,
+  financialDocs,
+  regulatoryDocs,
+  offerDocs,
+  grievanceFacts,
+  statutoryDocs,
+} from "../../data/investor-relations.js";
 ---
-<div class="max-w-4xl">
 
-  <section id="ir-overview" data-title="Company Overview" class="scroll-mt-28 pb-16 mb-16 border-b border-stone-300">
+<div class="max-w-4xl">
+  <section
+    id="ir-overview"
+    data-title="Company Overview"
+    class="scroll-mt-28 pb-16 mb-16 border-b border-stone-300"
+  >
     <div class="flex items-end justify-between gap-4 mb-6 flex-wrap">
-      <h2 class="font-display font-semibold text-2xl text-navy-950">I. Company Overview</h2>
-      <span class="font-mono text-xs text-stone-400 bg-white border border-stone-200 px-3 py-1 rounded-full">Reg. 46(2)(a) and (aa), Sec. 12</span>
+      <h2 class="font-display font-semibold text-2xl text-navy-950">
+        I. Company Overview
+      </h2>
+      <span
+        class="font-mono text-xs text-stone-400 bg-white border border-stone-200 px-3 py-1 rounded-full"
+        >Reg. 46(2)(a) and (aa), Sec. 12</span
+      >
     </div>
-    <p class="text-stone-600 text-sm leading-relaxed mb-6 max-w-2xl">Baseline company, registration, and constitutional details.</p>
+    <p class="text-stone-600 text-sm leading-relaxed mb-6 max-w-2xl">
+      Baseline company, registration, and constitutional details.
+    </p>
     <FactGrid items={overviewFacts} />
     <div class="mt-5 bg-white border border-stone-200">
       {overviewDocs.map((d) => <DocRow {...d} />)}
     </div>
   </section>
 
-  <section id="ir-statutory" data-title="Statutory Registrations" class="scroll-mt-28 pb-16 mb-16 border-b border-stone-300">
+  <section
+    id="ir-statutory"
+    data-title="Statutory Registrations"
+    class="scroll-mt-28 pb-16 mb-16 border-b border-stone-300"
+  >
     <div class="flex items-end justify-between gap-4 mb-6 flex-wrap">
-      <h2 class="font-display font-semibold text-2xl text-navy-950">Statutory Registrations & Certifications</h2>
-      <span class="font-mono text-xs text-stone-400 bg-white border border-stone-200 px-3 py-1 rounded-full">{statutoryDocs.length} documents</span>
+      <h2 class="font-display font-semibold text-2xl text-navy-950">
+        Statutory Registrations & Certifications
+      </h2>
+      <span
+        class="font-mono text-xs text-stone-400 bg-white border border-stone-200 px-3 py-1 rounded-full"
+        >{statutoryDocs.length} documents</span
+      >
     </div>
     <div class="bg-white border border-stone-200">
       {statutoryDocs.map((d) => <DocRow {...d} />)}
     </div>
   </section>
 
-  <section id="ir-governance" data-title="Board & Governance" class="scroll-mt-28 pb-16 mb-16 border-b border-stone-300">
+  <section
+    id="ir-governance"
+    data-title="Board & Governance"
+    class="scroll-mt-28 pb-16 mb-16 border-b border-stone-300"
+  >
     <div class="flex items-end justify-between gap-4 mb-6 flex-wrap">
-      <h2 class="font-display font-semibold text-2xl text-navy-950">II. Board & Governance</h2>
-      <span class="font-mono text-xs text-stone-400 bg-white border border-stone-200 px-3 py-1 rounded-full">Reg. 46(2)(ab) to (d), (i), Reg. 30(5)</span>
+      <h2 class="font-display font-semibold text-2xl text-navy-950">
+        II. Board & Governance
+      </h2>
+      <span
+        class="font-mono text-xs text-stone-400 bg-white border border-stone-200 px-3 py-1 rounded-full"
+        >Reg. 46(2)(ab) to (d), (i), Reg. 30(5)</span
+      >
     </div>
-    <p class="text-stone-600 text-sm leading-relaxed mb-6 max-w-2xl">Board composition, independence terms, and committee structure. Profiles below are structural placeholders.</p>
+    <p class="text-stone-600 text-sm leading-relaxed mb-6 max-w-2xl">
+      Board composition, independence terms, and committee structure. Profiles
+      below are structural placeholders.
+    </p>
 
+    <p class="eyebrow text-stone-400 mb-4">Board of Directors</p>
     <div class="grid sm:grid-cols-3 gap-4 mb-6">
-      {governanceRoles.map((role) => (
-        <div class="bg-white border border-stone-200 p-5">
-          <span class="flex items-center justify-center w-11 h-11 rounded-full border border-dashed border-stone-300 mb-4">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="text-stone-400"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </span>
-          <p class="font-semibold text-navy-950 text-sm mb-1">[ Director name ]</p>
-          <p class="text-rust-500 text-xs font-medium mb-3">{role}</p>
-          <p class="text-stone-400 text-xs leading-relaxed">Other directorships: to be added<br/>DIN: to be added</p>
-        </div>
-      ))}
+      {
+        boardOfDirectors.map((person) => (
+          <div class="bg-white border border-stone-200 p-5">
+            <div class="w-14 h-14 rounded-full overflow-hidden mb-4 bg-stone-100">
+              <img
+                src={person.photo}
+                alt={person.name}
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            <p class="font-semibold text-navy-950 text-sm mb-1">
+              {person.name}
+            </p>
+            <p class="text-rust-500 text-xs font-medium mb-3">{person.role}</p>
+            <p class="text-stone-400 text-xs leading-relaxed">
+              Other directorships: to be added
+              <br />
+              DIN: to be added
+            </p>
+          </div>
+        ))
+      }
+    </div>
+
+    <p class="eyebrow text-stone-400 mb-4">Senior Management</p>
+    <div class="grid sm:grid-cols-3 gap-4 mb-6">
+      {
+        seniorManagement.map((person) => (
+          <div class="bg-white border border-stone-200 p-5">
+            <div class="w-14 h-14 rounded-full overflow-hidden mb-4 bg-stone-100">
+              <img
+                src={person.photo}
+                alt={person.name}
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            <p class="font-semibold text-navy-950 text-sm mb-1">
+              {person.name}
+            </p>
+            <p class="text-rust-500 text-xs font-medium mb-3">{person.role}</p>
+          </div>
+        ))
+      }
     </div>
 
     <div class="overflow-x-auto mb-6 bg-white border border-stone-200">
       <table class="w-full text-sm min-w-[560px]">
         <thead>
           <tr class="bg-paper border-b border-stone-200">
-            <th class="text-left font-mono text-[10px] text-stone-400 uppercase tracking-wide px-5 py-3">Committee</th>
-            <th class="text-left font-mono text-[10px] text-stone-400 uppercase tracking-wide px-5 py-3">Chairperson</th>
-            <th class="text-left font-mono text-[10px] text-stone-400 uppercase tracking-wide px-5 py-3">Members</th>
+            <th
+              class="text-left font-mono text-[10px] text-stone-400 uppercase tracking-wide px-5 py-3"
+              >Committee</th
+            >
+            <th
+              class="text-left font-mono text-[10px] text-stone-400 uppercase tracking-wide px-5 py-3"
+              >Chairperson</th
+            >
+            <th
+              class="text-left font-mono text-[10px] text-stone-400 uppercase tracking-wide px-5 py-3"
+              >Members</th
+            >
           </tr>
         </thead>
         <tbody>
-          {governanceCommittees.map((c) => (
-            <tr class="border-b border-stone-100 last:border-0">
-              <td class="px-5 py-3.5 font-semibold text-navy-950">{c.name}</td>
-              <td class="px-5 py-3.5 text-stone-400">{c.chair}</td>
-              <td class="px-5 py-3.5 text-stone-400">{c.members}</td>
-            </tr>
-          ))}
+          {
+            governanceCommittees.map((c) => (
+              <tr class="border-b border-stone-100 last:border-0">
+                <td class="px-5 py-3.5 font-semibold text-navy-950">
+                  {c.name}
+                </td>
+                <td class="px-5 py-3.5 text-stone-400">{c.chair}</td>
+                <td class="px-5 py-3.5 text-stone-400">{c.members}</td>
+              </tr>
+            ))
+          }
         </tbody>
       </table>
     </div>
@@ -78,69 +167,165 @@ import {
     </div>
   </section>
 
-  <section id="ir-policies" data-title="Policies & Codes" class="scroll-mt-28 pb-16 mb-16 border-b border-stone-300">
+  <section
+    id="ir-policies"
+    data-title="Policies & Codes"
+    class="scroll-mt-28 pb-16 mb-16 border-b border-stone-300"
+  >
     <div class="flex items-end justify-between gap-4 mb-6 flex-wrap">
-      <h2 class="font-display font-semibold text-2xl text-navy-950">III. Policies & Codes</h2>
-      <span class="font-mono text-xs text-stone-400 bg-white border border-stone-200 px-3 py-1 rounded-full">{policyDocs.length} documents</span>
+      <h2 class="font-display font-semibold text-2xl text-navy-950">
+        III. Policies & Codes
+      </h2>
+      <span
+        class="font-mono text-xs text-stone-400 bg-white border border-stone-200 px-3 py-1 rounded-full"
+        >{policyDocs.length} documents</span
+      >
     </div>
-    <p class="text-stone-600 text-sm leading-relaxed mb-6 max-w-2xl">Board-approved policy documents, hosted as downloadable PDFs once finalised.</p>
+    <p class="text-stone-600 text-sm leading-relaxed mb-6 max-w-2xl">
+      Board-approved policy documents, hosted as downloadable PDFs once
+      finalised.
+    </p>
     <div class="bg-white border border-stone-200">
       {policyDocs.map((d) => <DocRow {...d} />)}
     </div>
   </section>
 
-  <section id="ir-financials" data-title="Financials & Reports" class="scroll-mt-28 pb-16 mb-16 border-b border-stone-300">
+  <section
+    id="ir-financials"
+    data-title="Financials & Reports"
+    class="scroll-mt-28 pb-16 mb-16 border-b border-stone-300"
+  >
     <div class="flex items-end justify-between gap-4 mb-6 flex-wrap">
-      <h2 class="font-display font-semibold text-2xl text-navy-950">IV. Financial Results & Reports</h2>
-      <span class="font-mono text-xs text-stone-400 bg-white border border-stone-200 px-3 py-1 rounded-full">Reg. 46(2)(l), Reg. 34, Sec. 92(3)</span>
+      <h2 class="font-display font-semibold text-2xl text-navy-950">
+        IV. Financial Results & Reports
+      </h2>
+      <span
+        class="font-mono text-xs text-stone-400 bg-white border border-stone-200 px-3 py-1 rounded-full"
+        >Reg. 46(2)(l), Reg. 34, Sec. 92(3)</span
+      >
     </div>
     <div class="bg-white border border-stone-200">
       {financialDocs.map((d) => <DocRow {...d} />)}
     </div>
   </section>
 
-  <section id="ir-shareholding" data-title="Shareholding Pattern" class="scroll-mt-28 pb-16 mb-16 border-b border-stone-300">
+  <section
+    id="ir-shareholding"
+    data-title="Shareholding Pattern"
+    class="scroll-mt-28 pb-16 mb-16 border-b border-stone-300"
+  >
     <div class="flex items-end justify-between gap-4 mb-6 flex-wrap">
-      <h2 class="font-display font-semibold text-2xl text-navy-950">V. Shareholding Pattern</h2>
-      <span class="font-mono text-xs text-stone-400 bg-white border border-stone-200 px-3 py-1 rounded-full">Reg. 46(2)(m)</span>
+      <h2 class="font-display font-semibold text-2xl text-navy-950">
+        V. Shareholding Pattern
+      </h2>
+      <span
+        class="font-mono text-xs text-stone-400 bg-white border border-stone-200 px-3 py-1 rounded-full"
+        >Reg. 46(2)(m)</span
+      >
     </div>
-    <div class="bg-white border border-dashed border-stone-300 p-10 text-center">
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" class="text-stone-300 mx-auto mb-4"><path d="M4 20V10M10 20V4M16 20V13M22 20V7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <p class="font-semibold text-navy-950 text-sm mb-2">Quarterly shareholding pattern, to be published</p>
-      <p class="text-stone-500 text-xs max-w-md mx-auto leading-relaxed">Category-wise holding (Promoter, Public, FII/DII, etc.) will appear here as a downloadable table each quarter, per the standard SEBI format.</p>
+    <div
+      class="bg-white border border-dashed border-stone-300 p-10 text-center"
+    >
+      <svg
+        width="32"
+        height="32"
+        viewBox="0 0 24 24"
+        fill="none"
+        class="text-stone-300 mx-auto mb-4"
+        ><path
+          d="M4 20V10M10 20V4M16 20V13M22 20V7"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"></path></svg
+      >
+      <p class="font-semibold text-navy-950 text-sm mb-2">
+        Quarterly shareholding pattern, to be published
+      </p>
+      <p class="text-stone-500 text-xs max-w-md mx-auto leading-relaxed">
+        Category-wise holding (Promoter, Public, FII/DII, etc.) will appear here
+        as a downloadable table each quarter, per the standard SEBI format.
+      </p>
     </div>
   </section>
 
-  <section id="ir-regulatory" data-title="Regulatory Disclosures" class="scroll-mt-28 pb-16 mb-16 border-b border-stone-300">
+  <section
+    id="ir-regulatory"
+    data-title="Regulatory Disclosures"
+    class="scroll-mt-28 pb-16 mb-16 border-b border-stone-300"
+  >
     <div class="flex items-end justify-between gap-4 mb-6 flex-wrap">
-      <h2 class="font-display font-semibold text-2xl text-navy-950">VI. Regulatory Disclosures</h2>
-      <span class="font-mono text-xs text-stone-400 bg-white border border-stone-200 px-3 py-1 rounded-full">Reg. 46(2)(n) to (x)</span>
+      <h2 class="font-display font-semibold text-2xl text-navy-950">
+        VI. Regulatory Disclosures
+      </h2>
+      <span
+        class="font-mono text-xs text-stone-400 bg-white border border-stone-200 px-3 py-1 rounded-full"
+        >Reg. 46(2)(n) to (x)</span
+      >
     </div>
     <div class="bg-white border border-stone-200">
       {regulatoryDocs.map((d) => <DocRow {...d} />)}
     </div>
   </section>
 
-  <section id="ir-offer" data-title="Offer Document (ICDR)" class="scroll-mt-28 pb-16 mb-16 border-b border-stone-300">
+  <section
+    id="ir-offer"
+    data-title="Offer Document (ICDR)"
+    class="scroll-mt-28 pb-16 mb-16 border-b border-stone-300"
+  >
     <div class="flex items-end justify-between gap-4 mb-6 flex-wrap">
-      <h2 class="font-display font-semibold text-2xl text-navy-950">VII. Offer Document & ICDR Disclosures</h2>
-      <span class="font-mono text-xs text-stone-400 bg-white border border-stone-200 px-3 py-1 rounded-full">Schedule VI, Part A</span>
+      <h2 class="font-display font-semibold text-2xl text-navy-950">
+        VII. Offer Document & ICDR Disclosures
+      </h2>
+      <span
+        class="font-mono text-xs text-stone-400 bg-white border border-stone-200 px-3 py-1 rounded-full"
+        >Schedule VI, Part A</span
+      >
     </div>
-    <div class="flex items-start gap-3 border border-dashed border-stone-300 bg-stone-100/60 px-5 py-4 mb-6">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="text-stone-400 shrink-0 mt-0.5"><path d="M12 9v4m0 4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <p class="text-stone-500 text-xs leading-relaxed">This section only applies during an active public issue, from RHP filing through bid or offer closing, retained per SEBI's rules thereafter.</p>
+    <div
+      class="flex items-start gap-3 border border-dashed border-stone-300 bg-stone-100/60 px-5 py-4 mb-6"
+    >
+      <svg
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        class="text-stone-400 shrink-0 mt-0.5"
+        ><path
+          d="M12 9v4m0 4h.01M12 2a10 10 0 100 20 10 10 0 000-20z"
+          stroke="currentColor"
+          stroke-width="1.6"
+          stroke-linecap="round"
+          stroke-linejoin="round"></path></svg
+      >
+      <p class="text-stone-500 text-xs leading-relaxed">
+        This section only applies during an active public issue, from RHP filing
+        through bid or offer closing, retained per SEBI's rules thereafter.
+      </p>
     </div>
     <div class="bg-white border border-stone-200">
       {offerDocs.map((d) => <DocRow {...d} />)}
     </div>
   </section>
 
-  <section id="ir-grievance" data-title="Investor Grievance" class="scroll-mt-28">
+  <section
+    id="ir-grievance"
+    data-title="Investor Grievance"
+    class="scroll-mt-28"
+  >
     <div class="flex items-end justify-between gap-4 mb-6 flex-wrap">
-      <h2 class="font-display font-semibold text-2xl text-navy-950">VIII. Investor Grievance & Contact</h2>
-      <span class="font-mono text-xs text-stone-400 bg-white border border-stone-200 px-3 py-1 rounded-full">Reg. 46(2)(j) to (k), Sec. 12</span>
+      <h2 class="font-display font-semibold text-2xl text-navy-950">
+        VIII. Investor Grievance & Contact
+      </h2>
+      <span
+        class="font-mono text-xs text-stone-400 bg-white border border-stone-200 px-3 py-1 rounded-full"
+        >Reg. 46(2)(j) to (k), Sec. 12</span
+      >
     </div>
-    <p class="text-stone-600 text-sm leading-relaxed mb-6 max-w-2xl">The fastest path for a shareholder to raise, and get resolution on, a grievance, kept separate from general enquiries.</p>
+    <p class="text-stone-600 text-sm leading-relaxed mb-6 max-w-2xl">
+      The fastest path for a shareholder to raise, and get resolution on, a
+      grievance, kept separate from general enquiries.
+    </p>
     <FactGrid items={grievanceFacts} />
   </section>
 </div>
