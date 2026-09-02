@@ -5,7 +5,6 @@
 
 export const overviewFacts = [
   { label: 'Nature of Business', value: 'Ship recycling & dismantling' },
-  { label: 'Parent Group', value: 'Rudra Global (est. 1991)' },
   { label: 'Registered Office', value: 'Alang, Bhavnagar, Gujarat', flag: 'confirm' },
   { label: 'CIN', value: 'U74999GJ2018PLC102791', flag: 'provide' },
 ]
@@ -67,12 +66,28 @@ export const policyDocs = [
 export const financialDocs = [
   { name: 'Standalone audited financials — last 3 years', provision: 'ICDR Sch. VI, Para 11(I)(A)(ii)', status: 'pending', href: null },
   { name: 'Material subsidiary financials — last 3 years', desc: 'No subsidiary as of date — retained for future use', provision: 'ICDR Sch. VI, Para 11(I)(A)(ii)', status: 'na', href: null },
-  { name: "Annual Report + Notice of AGM", desc: "Balance sheet, P&L, Director's Report, Corporate Governance Report", provision: 'Reg. 46(2)(l) / 34(1)(a)', status: 'pending', href: null },
+  { name: 'Annual Report 2024-25', desc: "Balance sheet, P&L, Director's Report, Corporate Governance Report", provision: 'Reg. 46(2)(l) / 34(1)(a)', status: 'live', href: '/documents/annual-reports/RGSR_ANNUAL REPORT_2024-25.pdf' },
+  { name: 'Annual Report 2023-24', desc: "Balance sheet, P&L, Director's Report, Corporate Governance Report", provision: 'Reg. 46(2)(l) / 34(1)(a)', status: 'live', href: '/documents/annual-reports/RGSR_ANNUAL REPORT_2023-24.pdf' },
+  { name: 'Annual Report 2022-23', desc: "Balance sheet, P&L, Director's Report, Corporate Governance Report", provision: 'Reg. 46(2)(l) / 34(1)(a)', status: 'live', href: '/documents/annual-reports/RGSR_ANNUAL REPORT_2022-23.pdf' },
   { name: 'Annual Return', provision: 'Sec. 92(3) / Reg. 46(2)(z)', status: 'pending', href: null },
   { name: 'Secretarial Compliance Report', provision: 'Reg. 24A(2) / 46(2)(t)', status: 'pending', href: null },
   { name: 'Related Party Transactions — disclosure', provision: 'Reg. 23(9)', status: 'pending', href: null },
   { name: 'Closure of register of members / debenture holders', provision: 'Companies (Mgmt. & Admin.) Rules, r.10', status: 'pending', href: null },
 ]
+
+export const shareholdingPattern = {
+  note: 'Shareholding Pattern — Existing @ Rs.10 face value',
+  rows: [
+    { name: 'Sonthalia Steel Re-Rolling Mills Pvt. Ltd.', shares: '60,00,000', pct: '40%' },
+    { name: 'Ashok Jagdishram Gupta', shares: '22,50,000', pct: '15%' },
+    { name: 'Shamarani Ashokkumar Gupta', shares: '22,50,000', pct: '15%' },
+    { name: 'Shrishti Nikhil Gupta', shares: '22,50,000', pct: '15%' },
+    { name: 'Sahil Ashokkumar Gupta', shares: '20,79,000', pct: '13.86%' },
+    { name: 'Sahil Ashokkumar Gupta (HUF)', shares: '21,000', pct: '0.14%' },
+    { name: 'Sugandh Gupta', shares: '1,50,000', pct: '1%' },
+  ],
+  total: { shares: '1,50,00,000', pct: '100%' },
+}
 
 export const regulatoryDocs = [
   { name: 'Statement of deviation (quarterly)', provision: 'Reg. 46(2)(x) / Reg. 32', status: 'pending', href: null },
