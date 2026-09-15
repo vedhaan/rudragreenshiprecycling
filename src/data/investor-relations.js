@@ -5,8 +5,8 @@
 
 export const overviewFacts = [
   { label: 'Nature of Business', value: 'Ship recycling & dismantling' },
-  { label: 'Registered Office', value: 'Alang, Bhavnagar, Gujarat', flag: 'confirm' },
-  { label: 'CIN', value: 'U74999GJ2018PLC102791', flag: 'provide' },
+  { label: 'Registered Office', value: 'Bhavnagar, Gujarat' },
+  { label: 'CIN', value: 'U74999GJ2018PLC102791'},
 ]
 
 export const overviewDocs = [
@@ -75,6 +75,31 @@ export const financialDocs = [
   { name: 'Closure of register of members / debenture holders', provision: 'Companies (Mgmt. & Admin.) Rules, r.10', status: 'pending', href: null },
 ]
 
+export const groupCompanyFinancials = [
+  {
+    company: 'Rudra Global Infra Products Limited', // confirm actual entity name
+    docs: [
+      { name: 'Annual Account 2025-26', provision: 'Sch. VI, Para 13(A)', status: 'live', href: '/documents/annual-reports/group-company-finicial/Annual Account_2025-26.pdf' },
+      { name: 'Annual Account 2024-25', provision: 'Sch. VI, Para 13(A)', status: 'live', href: '/documents/annual-reports/group-company-finicial/Annual Account_2024-25.pdf' },
+      { name: 'Annual Account 2023-24', provision: 'Sch. VI, Para 13(A)', status: 'live', href: '/documents/annual-reports/group-company-finicial/Annual Account_2023-24.pdf' },
+    ],
+  },
+  {
+    company: 'EKANTRA', // confirm full entity name
+    docs: [
+      { name: 'EKANTRA — FY 2024-25', provision: 'Sch. VI, Para 13(A)', status: 'live', href: '/documents/annual-reports/group-company-finicial/EKANTRA_2024-25.pdf' },
+      { name: 'EKANTRA — FY 2023-24', provision: 'Sch. VI, Para 13(A)', status: 'live', href: '/documents/annual-reports/group-company-finicial/EKANTRA_2023-24.pdf' },
+    ],
+  },
+  {
+    company: 'YSR', // confirm full entity name
+    docs: [
+      { name: 'YSR Audit Report — FY 2024-25', provision: 'Sch. VI, Para 13(A)', status: 'live', href: '/documents/annual-reports/group-company-finicial/YSR AUDIT REPORT_2024-25.pdf' },
+      { name: 'YSR Audit Report — FY 2023-24', provision: 'Sch. VI, Para 13(A)', status: 'live', href: '/documents/annual-reports/group-company-finicial/YSR AUDIT REPORT_2023-24.pdf' },
+    ],
+  },
+]
+
 export const shareholdingPattern = {
   note: 'Shareholding Pattern — Existing @ Rs.10 face value',
   rows: [
@@ -107,12 +132,12 @@ export const offerDocs = [
 ]
 
 export const grievanceFacts = [
-  { label: 'Grievance Email', value: 'investors@rudragreenshiprecycling.com', href: 'mailto:investors@rudragreenshiprecycling.com' },
+  { label: 'Grievance Email', value: '', href: 'mailto:investors@rudragreenshiprecycling.com', flag: 'to be added' },
   { label: 'Designated Grievance Officer', value: '[ Name, designation ]', flag: 'to be added' },
   { label: 'Registrar & Transfer Agent (RTA)', value: '[ Name, contact ]', flag: 'to be added' },
   { label: 'IEPF Nodal Officer', value: '[ Name, contact ]', flag: 'to be added' },
-  { label: 'Registered Office', value: 'Alang, Bhavnagar, Gujarat', flag: 'confirm' },
-  { label: 'CIN', value: 'U74999GJ2018PLC102791', flag: 'confirm' },
+  { label: 'Registered Office', value: 'Bhavnagar, Gujarat' },
+  { label: 'CIN', value: 'U74999GJ2018PLC102791' },
 ]
 
 // The 45-item disclosure index. `target` must match a section id in IRSections.astro.

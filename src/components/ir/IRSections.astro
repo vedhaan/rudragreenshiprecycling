@@ -2,11 +2,21 @@
 import DocRow from "./DocRow.astro";
 import FactGrid from "./FactGrid.astro";
 import {
-  overviewFacts, overviewDocs,
-  boardOfDirectors, seniorManagement, governanceCommittees, governanceDocs,
-  policyDocs, financialDocs, regulatoryDocs, offerDocs,
-  grievanceFacts, statutoryDocs, shareholdingPattern,
-} from '../../data/investor-relations.js'
+  overviewFacts,
+  overviewDocs,
+  boardOfDirectors,
+  seniorManagement,
+  governanceCommittees,
+  governanceDocs,
+  policyDocs,
+  financialDocs,
+  regulatoryDocs,
+  offerDocs,
+  grievanceFacts,
+  statutoryDocs,
+  shareholdingPattern,
+  groupCompanyFinancials,
+} from "../../data/investor-relations.js";
 ---
 
 <div class="max-w-4xl">
@@ -199,41 +209,98 @@ import {
     <div class="bg-white border border-stone-200">
       {financialDocs.map((d) => <DocRow {...d} />)}
     </div>
+    <p class="eyebrow text-stone-400 mt-10 mb-4">Group Company Financials</p>
+    <p class="text-stone-500 text-xs leading-relaxed mb-5 max-w-xl">
+      Financial line items for group companies, per Schedule VI, Para 13(A).
+    </p>
+
+    {
+      groupCompanyFinancials.map((group) => (
+        <div class="mb-5 last:mb-0">
+          <p class="font-semibold text-navy-950 text-sm mb-2">
+            {group.company}
+          </p>
+          <div class="bg-white border border-stone-200">
+            {group.docs.map((d) => (
+              <DocRow {...d} />
+            ))}
+          </div>
+        </div>
+      ))
+    }
   </section>
 
-    <section id="ir-shareholding" data-title="Shareholding Pattern" class="scroll-mt-28 pb-16 mb-16 border-b border-stone-300">
+  <section
+    id="ir-shareholding"
+    data-title="Shareholding Pattern"
+    class="scroll-mt-28 pb-16 mb-16 border-b border-stone-300"
+  >
     <div class="flex items-end justify-between gap-4 mb-6 flex-wrap">
-      <h2 class="font-display font-semibold text-2xl text-navy-950">V. Shareholding Pattern</h2>
-      <span class="font-mono text-xs text-stone-400 bg-white border border-stone-200 px-3 py-1 rounded-full">Reg. 46(2)(m)</span>
+      <h2 class="font-display font-semibold text-2xl text-navy-950">
+        V. Shareholding Pattern
+      </h2>
+      <span
+        class="font-mono text-xs text-stone-400 bg-white border border-stone-200 px-3 py-1 rounded-full"
+        >Reg. 46(2)(m)</span
+      >
     </div>
-    <p class="text-stone-600 text-sm leading-relaxed mb-6 max-w-2xl">{shareholdingPattern.note}</p>
+    <p class="text-stone-600 text-sm leading-relaxed mb-6 max-w-2xl">
+      {shareholdingPattern.note}
+    </p>
 
     <div class="overflow-x-auto bg-white border border-stone-200">
       <table class="w-full text-sm min-w-[560px]">
         <thead>
           <tr class="bg-paper border-b border-stone-200">
-            <th class="text-left font-mono text-[10px] text-stone-400 uppercase tracking-wide px-5 py-3 w-14">Sr. No.</th>
-            <th class="text-left font-mono text-[10px] text-stone-400 uppercase tracking-wide px-5 py-3">Name</th>
-            <th class="text-right font-mono text-[10px] text-stone-400 uppercase tracking-wide px-5 py-3 whitespace-nowrap">No. of Shares</th>
-            <th class="text-right font-mono text-[10px] text-stone-400 uppercase tracking-wide px-5 py-3 whitespace-nowrap">% of Shares</th>
+            <th
+              class="text-left font-mono text-[10px] text-stone-400 uppercase tracking-wide px-5 py-3 w-14"
+              >Sr. No.</th
+            >
+            <th
+              class="text-left font-mono text-[10px] text-stone-400 uppercase tracking-wide px-5 py-3"
+              >Name</th
+            >
+            <th
+              class="text-right font-mono text-[10px] text-stone-400 uppercase tracking-wide px-5 py-3 whitespace-nowrap"
+              >No. of Shares</th
+            >
+            <th
+              class="text-right font-mono text-[10px] text-stone-400 uppercase tracking-wide px-5 py-3 whitespace-nowrap"
+              >% of Shares</th
+            >
           </tr>
         </thead>
         <tbody>
-          {shareholdingPattern.rows.map((r, i) => (
-            <tr class="border-b border-stone-100 last:border-0">
-              <td class="px-5 py-3.5 font-mono text-stone-400">{i + 1}</td>
-              <td class="px-5 py-3.5 font-semibold text-navy-950">{r.name}</td>
-              <td class="px-5 py-3.5 text-right text-stone-600 font-mono">{r.shares}</td>
-              <td class="px-5 py-3.5 text-right text-rust-600 font-semibold">{r.pct}</td>
-            </tr>
-          ))}
+          {
+            shareholdingPattern.rows.map((r, i) => (
+              <tr class="border-b border-stone-100 last:border-0">
+                <td class="px-5 py-3.5 font-mono text-stone-400">{i + 1}</td>
+                <td class="px-5 py-3.5 font-semibold text-navy-950">
+                  {r.name}
+                </td>
+                <td class="px-5 py-3.5 text-right text-stone-600 font-mono">
+                  {r.shares}
+                </td>
+                <td class="px-5 py-3.5 text-right text-rust-600 font-semibold">
+                  {r.pct}
+                </td>
+              </tr>
+            ))
+          }
         </tbody>
         <tfoot>
           <tr class="bg-paper border-t-2 border-stone-300">
             <td class="px-5 py-4"></td>
-            <td class="px-5 py-4 font-display font-semibold text-navy-950">Total</td>
-            <td class="px-5 py-4 text-right font-mono font-semibold text-navy-950">{shareholdingPattern.total.shares}</td>
-            <td class="px-5 py-4 text-right font-semibold text-navy-950">{shareholdingPattern.total.pct}</td>
+            <td class="px-5 py-4 font-display font-semibold text-navy-950"
+              >Total</td
+            >
+            <td
+              class="px-5 py-4 text-right font-mono font-semibold text-navy-950"
+              >{shareholdingPattern.total.shares}</td
+            >
+            <td class="px-5 py-4 text-right font-semibold text-navy-950"
+              >{shareholdingPattern.total.pct}</td
+            >
           </tr>
         </tfoot>
       </table>
