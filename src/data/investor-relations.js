@@ -79,23 +79,23 @@ export const groupCompanyFinancials = [
   {
     company: 'Rudra Global Infra Products Limited', // confirm actual entity name
     docs: [
-      { name: 'Annual Account 2025-26', provision: 'Sch. VI, Para 13(A)', status: 'live', href: '/documents/annual-reports/group-company-finicial/Annual Account_2025-26.pdf' },
-      { name: 'Annual Account 2024-25', provision: 'Sch. VI, Para 13(A)', status: 'live', href: '/documents/annual-reports/group-company-finicial/Annual Account_2024-25.pdf' },
-      { name: 'Annual Account 2023-24', provision: 'Sch. VI, Para 13(A)', status: 'live', href: '/documents/annual-reports/group-company-finicial/Annual Account_2023-24.pdf' },
+      { name: 'Rudra Global Infra Products Limited — Annual Account 2025-26', provision: 'Sch. VI, Para 13(A)', status: 'live', href: '/documents/annual-reports/group-company-finicial/Annual Account_2025-26.pdf' },
+      { name: 'Rudra Global Infra Products Limited — Annual Account 2024-25', provision: 'Sch. VI, Para 13(A)', status: 'live', href: '/documents/annual-reports/group-company-finicial/Annual Account_2024-25.pdf' },
+      { name: 'Rudra Global Infra Products Limited — Annual Account 2023-24', provision: 'Sch. VI, Para 13(A)', status: 'live', href: '/documents/annual-reports/group-company-finicial/Annual Account_2023-24.pdf' },
     ],
   },
   {
-    company: 'EKANTRA', // confirm full entity name
+    company: 'Ekantra Global Retails Private Limited', // confirm full entity name
     docs: [
-      { name: 'EKANTRA — FY 2024-25', provision: 'Sch. VI, Para 13(A)', status: 'live', href: '/documents/annual-reports/group-company-finicial/EKANTRA_2024-25.pdf' },
-      { name: 'EKANTRA — FY 2023-24', provision: 'Sch. VI, Para 13(A)', status: 'live', href: '/documents/annual-reports/group-company-finicial/EKANTRA_2023-24.pdf' },
+      { name: 'Ekantra Global Retails Private Limited — FY 2024-25', provision: 'Sch. VI, Para 13(A)', status: 'live', href: '/documents/annual-reports/group-company-finicial/EKANTRA_2024-25.pdf' },
+      { name: 'Ekantra Global Retails Private Limited — FY 2023-24', provision: 'Sch. VI, Para 13(A)', status: 'live', href: '/documents/annual-reports/group-company-finicial/EKANTRA_2023-24.pdf' },
     ],
   },
   {
-    company: 'YSR', // confirm full entity name
+    company: 'YSR Building Solutions Private Limited', // confirm full entity name
     docs: [
-      { name: 'YSR Audit Report — FY 2024-25', provision: 'Sch. VI, Para 13(A)', status: 'live', href: '/documents/annual-reports/group-company-finicial/YSR AUDIT REPORT_2024-25.pdf' },
-      { name: 'YSR Audit Report — FY 2023-24', provision: 'Sch. VI, Para 13(A)', status: 'live', href: '/documents/annual-reports/group-company-finicial/YSR AUDIT REPORT_2023-24.pdf' },
+      { name: 'YSR Building Solutions Private Limited — Audit Report — FY 2024-25', provision: 'Sch. VI, Para 13(A)', status: 'live', href: '/documents/annual-reports/group-company-finicial/YSR AUDIT REPORT_2024-25.pdf' },
+      { name: 'YSR Building Solutions Private Limited — Audit Report — FY 2023-24', provision: 'Sch. VI, Para 13(A)', status: 'live', href: '/documents/annual-reports/group-company-finicial/YSR AUDIT REPORT_2023-24.pdf' },
     ],
   },
 ]
