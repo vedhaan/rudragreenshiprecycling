@@ -124,7 +124,7 @@ export const regulatoryDocs = [
 
 export const offerDocs = [
   { name: 'DRHP / RHP / Prospectus', desc: 'Draft Red Herring Prospectus, dated September 30, 2026', provision: 'Regulation 26', status: 'live', href: '/documents/offer-document/DRHP Rudra Green Ship Recycling Limited_September 30, 2026.pdf' },
-  { name: 'Industry Report', provision: 'AIBI guidance, Oct 2021', status: 'conditional', href: null },
+  { name: 'Industry Report', provision: 'AIBI guidance, Oct 2021', status: 'live', href: '/documents/offer-document/IAL - Ship Recycling Industry_Clean Version_29092026.pdf'  },
   { name: 'Monitoring Agency Report', desc: 'Filed within 45 days of each quarter-end, post-issue', provision: 'Regulation 41', status: 'conditional', href: null },
   { name: 'Outstanding overdues to material creditors', provision: 'Sch. VI, Para 12(A)(2)(iii)', status: 'conditional', href: null },
   { name: 'Group company financial line items (top 5)', provision: 'Sch. VI, Para 13(A)', status: 'conditional', href: null },
