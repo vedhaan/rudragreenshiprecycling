@@ -1,0 +1,53 @@
+---
+const vessels = [
+  { name: 'AB-11', img: '/img/recycled-ships/AB-11.JPG.jpeg' },
+  { name: 'D.V. Aba', img: '/img/recycled-ships/D.V. ABA.jpg.jpeg' },
+  { name: 'D.V. Hero', img: '/img/recycled-ships/D.V. HERO.jpg.jpeg' },
+  { name: 'Jabal Ali 7', img: '/img/recycled-ships/JABAL ALI 7.jpg.jpeg' },
+  { name: 'Karam-14', img: '/img/recycled-ships/KARAM-14.jpg.jpeg' },
+  { name: 'M.T. Morality', img: '/img/recycled-ships/M.T MORALITY.jpeg' },
+  { name: 'M.T. Seabas', img: '/img/recycled-ships/M.T. SEABAS.jpg.jpeg' },
+  { name: 'M.T. VS New', img: '/img/recycled-ships/M.T. VS NEW.jpeg' },
+  { name: 'M.V. Frio Antarctic', img: '/img/recycled-ships/M.V FRIO ANTARCTIC.jpg.jpeg' },
+  { name: 'M.V. Frio Olympic', img: '/img/recycled-ships/M.V FRIO OLYMPIC.jpg.jpeg' },
+  { name: 'M.V. Maher', img: '/img/recycled-ships/M.V MAHER.jpg.jpeg' },
+  { name: 'Monet', img: '/img/recycled-ships/MONET.JPG.jpeg' },
+  { name: 'Tahara', img: '/img/recycled-ships/TAHARA.jpg.jpeg' },
+  { name: 'Ya Hussain', img: '/img/recycled-ships/YA HUSSAIN.jpg.jpeg' },
+  { name: 'At Middle Bridge', img: '/img/recycled-ships/AT MIDDLE BRIDGE.jpg.jpeg' }, // confirm: vessel name or shot caption?
+]
+---
+
+<section class="relative bg-paper py-24 lg:py-32 overflow-hidden">
+  <div class="hidden xl:block absolute inset-0 opacity-[0.035] pointer-events-none"
+    style="background-image: linear-gradient(#0E2142 1px, transparent 1px), linear-gradient(90deg, #0E2142 1px, transparent 1px); background-size: 64px 64px;">
+  </div>
+
+  <div class="relative max-w-[1800px] mx-auto px-6 sm:px-10 xl:px-16 2xl:px-20">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-14 lg:mb-20">
+      <div class="max-w-xl">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="w-8 h-px bg-rust-500"></span>
+          <p class="eyebrow text-sage-600">Record of work</p>
+        </div>
+        <h2 class="font-display font-semibold text-3xl lg:text-4xl xl:text-[2.75rem] text-navy-950 leading-[1.1]">
+          Vessels Recycled
+        </h2>
+      </div>
+      <div class="flex items-baseline gap-3 shrink-0">
+        <span class="font-display font-semibold text-5xl xl:text-6xl text-navy-950">90+</span>
+        <span class="eyebrow text-stone-500 leading-tight max-w-[9rem]">Vessels responsibly recycled to date</span>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 xl:gap-5">
+      {vessels.map((v) => (
+        <div class="group relative aspect-square overflow-hidden bg-stone-200">
+          <img src={v.img} alt={v.name} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-navy-950/75 via-navy-950/0 to-navy-950/0"></div>
+          <span class="absolute bottom-3 left-3 right-3 text-white text-sm font-medium truncate">{v.name}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
