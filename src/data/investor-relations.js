@@ -101,17 +101,17 @@ export const groupCompanyFinancials = [
 ]
 
 export const shareholdingPattern = {
-  note: 'Shareholding Pattern — Existing @ Rs.10 face value',
+  note: 'Shareholding Pattern — At Face Value Rs. 5',
   rows: [
-    { name: 'Sonthalia Steel Re-Rolling Mills Pvt. Ltd.', shares: '60,00,000', pct: '40%' },
-    { name: 'Ashok Jagdishram Gupta', shares: '22,50,000', pct: '15%' },
-    { name: 'Shamarani Ashokkumar Gupta', shares: '22,50,000', pct: '15%' },
-    { name: 'Shrishti Nikhil Gupta', shares: '22,50,000', pct: '15%' },
-    { name: 'Sahil Ashokkumar Gupta', shares: '20,79,000', pct: '13.86%' },
-    { name: 'Sahil Ashokkumar Gupta (HUF)', shares: '21,000', pct: '0.14%' },
-    { name: 'Sugandh Gupta', shares: '1,50,000', pct: '1%' },
+    { name: 'Sonthalia Steel Re-Rolling Mills Pvt. Ltd.', shares: '1,20,00,000', pct: '40%' },
+    { name: 'Ashok Jagdishram Gupta', shares: '45,00,000', pct: '15%' },
+    { name: 'Shamarani Ashokkumar Gupta', shares: '45,00,000', pct: '15%' },
+    { name: 'Shrishti Nikhil Gupta', shares: '45,00,000', pct: '15%' },
+    { name: 'Sahil Ashokkumar Gupta', shares: '41,58,000', pct: '13.86%' },
+    { name: 'Sahil Ashokkumar Gupta (HUF)', shares: '42,000', pct: '0.14%' },
+    { name: 'Sugandh Gupta', shares: '3,00,000', pct: '1%' },
   ],
-  total: { shares: '1,50,00,000', pct: '100%' },
+  total: { shares: '3,00,00,000', pct: '100%' },
 }
 
 export const regulatoryDocs = [
