@@ -101,7 +101,7 @@ export const groupCompanyFinancials = [
 ]
 
 export const shareholdingPattern = {
-  note: 'Shareholding Pattern — At Face Value Rs. 5',
+  note: 'Shareholding Pattern — @ Face Value Rs. 5',
   rows: [
     { name: 'Sonthalia Steel Re-Rolling Mills Pvt. Ltd.', shares: '1,20,00,000', pct: '40%' },
     { name: 'Ashok Jagdishram Gupta', shares: '45,00,000', pct: '15%' },
