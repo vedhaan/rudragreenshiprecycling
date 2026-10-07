@@ -51,16 +51,26 @@ export const governanceDocs = [
 ]
 
 export const policyDocs = [
-  { name: 'Vigil Mechanism / Whistle Blower Policy', provision: 'Reg. 46(2)(e)', status: 'pending', href: null },
-  { name: 'Policy on Related Party Transactions', provision: 'Reg. 46(2)(g)', status: 'pending', href: null },
-  { name: 'Policy for Determining Material Subsidiaries', provision: 'Reg. 46(2)(h)', status: 'pending', href: null },
-  { name: 'Archival Policy', provision: 'Reg. 30(8)', status: 'pending', href: null },
-  { name: 'Policy on Determination of Materiality of Events', provision: 'Reg. 30(4)(ii) / 46(2)(u)', status: 'pending', href: null },
-  { name: 'Dividend Distribution Policy', desc: 'Applicable once among the top 1,000 listed entities by market cap', provision: 'Reg. 43A / 46(2)(y)', status: 'conditional', href: null },
-  { name: 'Insider Trading Code / Policy', provision: 'SEBI (PIT) Reg. 8(1)', status: 'pending', href: null },
-  { name: 'Qualification & Remuneration Policy — Directors / KMP', provision: 'Companies Act, Sec. 178', status: 'pending', href: null },
-  { name: 'CSR Policy & Approved Projects', provision: 'CSR Policy Rules 2014, Rule 9', status: 'pending', href: null },
-  { name: 'Employee Benefit Scheme Documents', desc: 'Excludes commercially sensitive information, per board-approved redactions', provision: 'Reg. 46(2)(za)', status: 'pending', href: null },
+  { name: 'Anti-Bribery & Anti-Corruption Policy', provision: 'Board-approved', status: 'live', href: '/documents/policies_and_codes/1.Anti_Bribery_Anti_Corruption_Policy.pdf' },
+  { name: 'Anti-Money Laundering Policy', provision: 'Board-approved', status: 'live', href: '/documents/policies_and_codes/2.Anti_Money_Laundering_Policy.pdf' },
+  { name: 'Board Diversity Policy', provision: 'Board-approved', status: 'live', href: '/documents/policies_and_codes/3.Board_Diversity_Policy.pdf' },
+  { name: 'Code of Conduct', provision: 'Reg. 46(2)(d)', status: 'live', href: '/documents/policies_and_codes/4.Code_of_Conduct.pdf' },
+  { name: 'Code of Practices and Procedure for Fair Disclosure of UPSI', provision: 'SEBI (PIT) Regulations', status: 'live', href: '/documents/policies_and_codes/5.Code_of_Practices_and_Procedure_of_Fair_Disclosure_of_UPSI.pdf' },
+  { name: 'CSR Policy', provision: 'CSR Policy Rules 2014, Rule 9', status: 'live', href: '/documents/policies_and_codes/6. CSR_Policy.pdf' },
+  { name: 'Dividend Distribution Policy', desc: 'Applicable once among the top 1,000 listed entities by market cap', provision: 'Reg. 43A / 46(2)(y)', status: 'live', href: '/documents/policies_and_codes/7.Dividend_Distribution_Policy final.pdf' },
+  { name: 'Familiarisation Programme for Independent Directors', desc: 'Sessions attended, hours logged (annual & cumulative)', provision: 'Reg. 46(2)(i)', status: 'live', href: '/documents/policies_and_codes/8.Familiarization_Program_for_Independent_Directors. final.pdf' },
+  { name: 'Internal Procedures and Conduct for Prevention', provision: 'Board-approved', status: 'live', href: '/documents/policies_and_codes/9.Internal_Procedures_and_Conduct for Prevention.pdf' },
+  { name: 'Material Related Party Transaction Policy', provision: 'Reg. 46(2)(g)', status: 'live', href: '/documents/policies_and_codes/10.Material_Related_Party_Transaction.pdf' },
+  // { name: 'Materiality Policy', provision: 'Reg. 30(4)(ii) / 46(2)(u)', status: 'live', href: '/documents/policies_and_codes/11.Materiality_Policy.pdf' },
+  { name: 'Nomination and Remuneration Policy', provision: 'Companies Act, Sec. 178', status: 'live', href: '/documents/policies_and_codes/12.Nomination and Remuneration.pdf' },
+  { name: 'Policy for Determination of Material Subsidiary', provision: 'Reg. 46(2)(h)', status: 'live', href: '/documents/policies_and_codes/13.Policy_for_Determination_of_Material_Subsidiary. final.pdf' },
+  { name: 'Policy on Disclosure of Material Events and Information', provision: 'Reg. 30(4)(ii) / 46(2)(u)', status: 'live', href: '/documents/policies_and_codes/14. Policy_on_Disclosure of Material Events and Information. final.pdf' },
+  { name: 'Policy on Prevention of Sexual Harassment at Workplace', provision: 'POSH Act, 2013', status: 'live', href: '/documents/policies_and_codes/15.Policy_on_Prevention of Sexual Harrasment at Workplace. final.pdf' },
+  { name: 'Preservation of Records Policy', provision: 'Reg. 30(8)', status: 'live', href: '/documents/policies_and_codes/16.Preservation_of_Records. final.pdf' },
+  { name: 'Risk Management Policy', provision: 'Board-approved', status: 'live', href: '/documents/policies_and_codes/17.Risk_Management_Policy. final.pdf' },
+  { name: 'Succession Plan', provision: 'Board-approved', status: 'live', href: '/documents/policies_and_codes/18.Succession_Plan. final.pdf' },
+  { name: 'Terms and Conditions of Appointment of Independent Directors', provision: 'Reg. 46(2)(b)', status: 'live', href: '/documents/policies_and_codes/19.Terms_and_Conditions of Appointment of Independent Directors. final.pdf' },
+  { name: 'Whistle Blower Policy', provision: 'Reg. 46(2)(e)', status: 'live', href: '/documents/policies_and_codes/20.Whistle_blower_Policy. final.pdf' },
 ]
 
 export const financialDocs = [
