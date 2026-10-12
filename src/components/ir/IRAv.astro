@@ -1,0 +1,37 @@
+---
+import { ipoAv } from '../../data/investor-relations.js'
+---
+<div class="bg-white border border-stone-200 p-6 mb-6">
+  <div class="flex flex-col lg:flex-row lg:items-center gap-5 lg:gap-8">
+    <span class="flex items-center justify-center w-12 h-12 rounded-full border border-rust-500/30 bg-rust-500/[0.06] shrink-0">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="text-rust-500"><path d="M5 4h14a1 1 0 011 1v14a1 1 0 01-1 1H5a1 1 0 01-1-1V5a1 1 0 011-1z M10 9l5 3-5 3V9z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </span>
+
+    <div class="flex-1 min-w-0">
+      <p class="font-semibold text-navy-950 text-sm">{ipoAv.title}</p>
+      <p class="font-mono text-[10px] text-stone-400 mt-1">{ipoAv.subtitle}</p>
+      <p class="text-stone-500 text-xs leading-relaxed mt-2">
+        Audiovisual film of the Company, made available in accordance with the SEBI circular on “Audiovisual (AV) Presentation of Disclosures Made in Public Issue Documents” dated September 30, 2026.
+      </p>
+    </div>
+
+    <div class="flex flex-wrap gap-3 shrink-0">
+      {ipoAv.links.map((l) => (
+        l.url ? (
+          <a href={l.url} target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-rust-500 text-white text-sm font-medium px-5 py-2.5 hover:bg-rust-600 transition-colors">
+            Watch in {l.language}
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        ) : (
+          <span class="inline-flex items-center gap-2 border border-stone-200 text-stone-400 text-sm font-medium px-5 py-2.5 cursor-not-allowed">
+            {l.language}: link pending
+          </span>
+        )
+      ))}
+    </div>
+  </div>
+
+  <p class="mt-5 pt-5 border-t border-stone-200 text-stone-500 text-xs leading-relaxed">
+    The IPO AV provides only the salient features of the Issue and accordingly, potential investors should not rely on the IPO AV. Any decision on whether to invest in the equity shares must be made solely on the basis of the red herring prospectus.
+  </p>
+</div>

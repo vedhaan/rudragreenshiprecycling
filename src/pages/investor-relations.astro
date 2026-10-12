@@ -2,9 +2,10 @@
 import Navbar from '../components/Navbar.astro'
 import IRHero from '../components/ir/IRHero.astro'
 import IRNav from '../components/ir/IRNav.astro'
-import IRSections from '../components/ir/IRSections.astro'
 import IRNavMobile from '../components/ir/IRNavMobile.astro'
+import IRSections from '../components/ir/IRSections.astro'
 import DisclosureIndex from '../components/ir/DisclosureIndex.astro'
+import IRDisclaimerGate from '../components/ir/IRDisclaimerGate.astro'
 import Footer from '../components/Footer.astro'
 import '../styles/global.css'
 ---
@@ -14,32 +15,48 @@ import '../styles/global.css'
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Investor Relations | Rudra Green Ship Recycling Group</title>
+
+    <!-- Runs before first paint so a returning visitor in the same session never sees the gate flash -->
+    <script is:inline>
+      try {
+        if (sessionStorage.getItem('rgsr-ir-disclaimer') === 'accepted') {
+          document.documentElement.setAttribute('data-ir-accepted', 'true')
+        }
+      } catch (e) {}
+    </script>
   </head>
   <body class="bg-paper">
-    <Navbar />
-    <IRHero />
+    <IRDisclaimerGate />
 
-    <section class="relative py-4 lg:py-8">
-      <div class="max-w-[1800px] mx-auto px-6 sm:px-10 xl:px-16 2xl:px-20">
+    <div id="ir-page">
+      <Navbar />
+      <IRHero />
 
-        <!-- Desktop: split-pane shell — left nav fixed in place, right pane scrolls independently -->
-        <div class="hidden lg:grid lg:grid-cols-[224px_1fr] lg:gap-16 xl:gap-20 lg:h-[calc(100vh-6.5rem)]">
-          <IRNav />
-          <div id="ir-scroll-pane" class="min-w-0 h-full overflow-y-auto pr-2 scroll-smooth">
-            <IRSections />
-            <DisclosureIndex />
+      <section class="relative py-4 lg:py-8">
+        <div class="max-w-[1800px] mx-auto px-6 sm:px-10 xl:px-16 2xl:px-20">
+          <div class="lg:grid lg:grid-cols-[250px_1fr] lg:gap-14 lg:items-start">
+            <div class="hidden lg:block">
+              <IRNav />
+            </div>
+            <div class="lg:hidden">
+              <IRNavMobile />
+            </div>
+            <div class="min-w-0">
+              <IRSections />
+              <DisclosureIndex />
+            </div>
           </div>
         </div>
+      </section>
 
-        <!-- Mobile/tablet: normal document flow, horizontal subnav -->
-        <div class="lg:hidden">
-          <IRNavMobile />
-          <IRSections />
-          <DisclosureIndex />
-        </div>
-      </div>
-    </section>
-
-    <Footer />
+      <Footer />
+    </div>
   </body>
 </html>
+
+<style is:global>
+  /* Gate visible and page hidden until accepted */
+  html:not([data-ir-accepted]) #ir-page { display: none; }
+  html:not([data-ir-accepted]) { overflow: hidden; }
+  html[data-ir-accepted] #ir-gate { display: none; }
+</style>

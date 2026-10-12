@@ -1,0 +1,79 @@
+<div id="ir-gate" class="fixed inset-0 z-[300] overflow-y-auto bg-paper" role="dialog" aria-modal="true" aria-labelledby="ir-gate-title">
+  <div class="min-h-full flex items-start justify-center px-4 sm:px-6 py-10 sm:py-16">
+    <div class="w-full max-w-3xl bg-white border border-stone-300 p-6 sm:p-10 lg:p-12 shadow-[0_1px_2px_rgba(14,33,66,0.04),0_24px_48px_-20px_rgba(14,33,66,0.16)]">
+
+      <div class="flex items-center gap-3 mb-5">
+        <span class="w-8 h-px bg-rust-500 shrink-0"></span>
+        <p class="eyebrow text-rust-500">Notice</p>
+      </div>
+      <h1 id="ir-gate-title" class="font-display font-semibold text-3xl text-navy-950 mb-8">Disclaimer</h1>
+
+      <div class="space-y-4 text-sm leading-relaxed text-stone-700">
+        <p class="font-semibold text-navy-950">Please read the following notice carefully before deciding whether to click on the link below to view the information on this web page.</p>
+
+        <p>Rudra Green Ship Recycling Limited (the “Company”) and Cumulative Capital Private Limited do not accept any responsibility for any contravention of applicable securities laws and regulations by individuals as a result of false information provided by such individuals.</p>
+
+        <p>The information furnished on the following web pages contains information intended only for persons not located in any jurisdiction where the distribution of such information is prohibited or restricted, including the United States, Canada, United Kingdom, Australia and Japan. This information is not to be furnished or made available to any person in the United States, Canada, United Kingdom, Australia or Japan or to any person to whom it is unlawful to furnish or make available such information.</p>
+
+        <p>The information on the following web pages is intended solely to provide background information on the Company and does not constitute, or form a part of, and should not be construed as, an offer to sell or issue or the solicitation of an offer to buy or acquire, any shares or other securities of the Company in any jurisdiction, including in the United States, and is not for publication, release or distribution in the United States or to US persons (within the meaning of Regulation S under the United States Securities Act of 1933, as amended (the “Securities Act”)). The shares or other securities of the Company have not been and will not be registered under the Securities Act, or with any securities regulatory authority of any state of other jurisdiction in the United States, and may not be offered, sold, pledged or otherwise transferred except pursuant to an exemption from, or in a transaction not subject to, the registration requirements of the Securities Act and in compliance with any applicable state securities laws.</p>
+
+        <p>Neither the information on the following web pages nor any copy of any of it may be taken or transmitted into the United States, Canada, United Kingdom, Australia or Japan or distributed, directly or indirectly, in the United States, Canada, United Kingdom, Australia or Japan or to any resident thereof.</p>
+
+        <p>The link to the audiovisual film of the Company (“IPO AV”) is being made available on this website in accordance with the circular on “Audiovisual (AV) Presentation of Disclosures Made in Public Issue Documents” dated September 30, 2026, issued by the Securities and Exchange Board of India. Such materials are not directed at or intended to be accessed by persons located outside India. Making the information contained herein available in electronic format does not constitute an offer to sell, the solicitation of an offer to buy, or any advice or recommendation to buy, or sell or transact in any securities of the Company in the United States or in any other jurisdiction, including without limitation, India. The IPO AV provides only the salient features of the Issue and accordingly, potential investors should not rely on the IPO AV. Any decision on whether to invest in the equity shares must be made solely on the basis of the red herring prospectus.</p>
+
+        <p>Investors are advised not to rely on any other document, content or information provided on the Issue on the internet / online websites/ social media platforms / micro-blogging platforms and by the influencers since the same is not authorized/ approved/ commissioned/ paid by the Company or its promoter(s)/directors/key managerial personnel in any manner. Any such posts, including on social media platforms, may be illegal in certain jurisdictions and only certain categories of persons may be authorized to access such information. Such posts, including on social media platforms, do not constitute an offer or solicitation of an offer, or any advice or recommendation to purchase, sell or transact in any of the Company’s securities.</p>
+
+        <p>The information is current only as of its date and shall not, under any circumstances, create any implication that the information contained therein is correct as of any time subsequent to the date thereof or that there has been no change in the financial condition or affairs of the Company since such date. This document may be updated from time to time and there is no undertaking by the Company or Cumulative Capital Private Limited to post any such amendments or supplements on this website.</p>
+
+        <p class="font-semibold text-navy-950 pt-2">By clicking on the link below to view the information on the following web pages and other information in this website, you will be deemed to have represented and warranted that:</p>
+
+        <ol class="space-y-2">
+          <li class="flex gap-3">
+            <span class="font-mono text-xs text-stone-500 shrink-0 pt-0.5">(i)</span>
+            <span>you are not currently located in any jurisdiction where distribution of the information on this website is prohibited or restricted, including the United States, Canada, United Kingdom, Australia or Japan;</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="font-mono text-xs text-stone-500 shrink-0 pt-0.5">(ii)</span>
+            <span>it is lawful for you to receive a copy of the information contained on this website; and</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="font-mono text-xs text-stone-500 shrink-0 pt-0.5">(iii)</span>
+            <span>you have read, understand and agree to comply with all of the restrictions set forth above.</span>
+          </li>
+        </ol>
+      </div>
+
+      <div class="mt-10 pt-8 border-t border-stone-200 flex flex-col sm:flex-row gap-4">
+        <a href="/" class="border border-navy-900 text-navy-900 px-7 py-3.5 font-medium text-center hover:bg-navy-900 hover:text-white transition-colors">
+          Click here to return to the main menu
+        </a>
+        <button type="button" id="ir-gate-continue" class="bg-rust-500 text-white px-7 py-3.5 font-medium hover:bg-rust-600 transition-colors">
+          Click here to continue
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Must match the key used in the inline script in investor-relations.astro
+  const KEY = 'rgsr-ir-disclaimer'
+
+  document.getElementById('ir-gate-continue')?.addEventListener('click', () => {
+    try {
+      sessionStorage.setItem(KEY, 'accepted')
+    } catch {}
+
+    document.documentElement.setAttribute('data-ir-accepted', 'true')
+
+    // If the visitor arrived on a deep link like #ir-policies, jump to it after accepting
+    try {
+      const target = window.location.hash ? document.querySelector(window.location.hash) : null
+      if (target) {
+        target.scrollIntoView()
+        return
+      }
+    } catch {}
+    window.scrollTo(0, 0)
+  })
+</script>

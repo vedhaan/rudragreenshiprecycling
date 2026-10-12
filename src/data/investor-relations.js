@@ -3,6 +3,21 @@
 // under /public/documents/... To mark something not applicable, use status 'na'.
 // To mark something that only applies during an active public issue, use 'conditional'.
 
+export const ipoAv = {
+  title: 'IPO AV',
+  subtitle: 'Rudra Green Ship Recycling Limited, September 30, 2026',
+  links: [
+    {
+      language: 'English',
+      url: 'https://drive.google.com/file/d/1ip4HYxrH0P4r9C6nbFthy47gELlxMBe2/view?usp=sharing',
+    },
+    {
+      language: 'Hindi',
+      url: 'https://drive.google.com/drive/folders/1l71GbmbVRN5CfZd1v_B-XRWbPuytUuRV',
+    },
+  ],
+}
+
 export const overviewFacts = [
   { label: 'Nature of Business', value: 'Ship recycling & dismantling' },
   { label: 'Registered Office', value: 'Bhavnagar, Gujarat' },
@@ -23,17 +38,44 @@ export const statutoryDocs = [
 ]
 
 export const governanceCommittees = [
-  { name: 'Audit Committee', chair: '—', members: '—' },
-  { name: 'Nomination & Remuneration Committee', chair: '—', members: '—' },
-  { name: 'Stakeholders Relationship Committee', chair: '—', members: '—' },
-  { name: 'CSR Committee', chair: '—', members: '—' },
+  {
+    name: 'Audit Committee',
+    note: 'Constituted by the Board on September 16, 2026, in compliance with Section 177 of the Companies Act, 2013 and Regulation 18 of the SEBI Listing Regulations.',
+    members: [
+      { name: 'Sheth Dhaval', position: 'Chairperson', designation: 'Independent Director' },
+      { name: 'Oza Bansi Chirag', position: 'Member', designation: 'Independent Director' },
+      { name: 'Sahil Ashok Gupta', position: 'Member', designation: 'Managing Director' },
+    ],
+  },
+  {
+    name: 'Nomination & Remuneration Committee',
+    note: 'Constituted by a Board resolution dated September 16, 2026, in compliance with Section 178 of the Companies Act and Regulation 19 of the SEBI Listing Regulations.',
+    members: [
+      { name: 'Sheth Dhaval', position: 'Chairperson', designation: 'Independent Director' },
+      { name: 'Oza Bansi Chirag', position: 'Member', designation: 'Independent Director' },
+      { name: 'Ashokkumar Jagdishram Gupta', position: 'Member', designation: 'Non-Executive Director' },
+    ],
+  },
+  {
+    name: "Stakeholders' Relationship Committee",
+    note: "Constituted by the Board at its meeting held on September 16, 2026, in compliance with Section 178 of the Companies Act and Regulation 20 of the SEBI Listing Regulations.",
+    members: [
+      { name: 'Sheth Dhaval', position: 'Chairperson', designation: 'Independent Director' },
+      { name: 'Oza Bansi Chirag', position: 'Member', designation: 'Independent Director' },
+      { name: 'Ashokkumar Jagdishram Gupta', position: 'Member', designation: 'Non-Executive Director' },
+    ],
+  },
+  {
+    name: 'CSR Committee',
+    note: '',
+    members: [],
+  },
 ]
-
 export const governanceRoles = ['Chairman & Managing Director', 'Independent Director', 'Whole-time Director']
 
 export const boardOfDirectors = [
-  { name: 'Ashok Gupta', role: 'Director', photo: '/img/team/ashok-gupta.jpg' },
-  { name: 'Sahil Gupta', role: 'Director', photo: '/img/team/sahil-gupta.jpg' },
+  { name: 'Ashok Gupta', role: 'Non-Executive Director', photo: '/img/team/ashok-gupta.jpg' },
+  { name: 'Sahil Gupta', role: 'Managing Director', photo: '/img/team/sahil-gupta.jpg' },
   { name: 'Shama Gupta', role: 'Director', photo: '/img/team/shama-gupta.jpg' },
 ]
 
@@ -134,7 +176,9 @@ export const regulatoryDocs = [
 
 export const offerDocs = [
   { name: 'DRHP / RHP / Prospectus', desc: 'Draft Red Herring Prospectus, dated September 30, 2026', provision: 'Regulation 26', status: 'live', href: '/documents/offer-document/DRHP Rudra Green Ship Recycling Limited_September 30, 2026.pdf' },
+  { name: 'DRAFT ABRIDGED PROSPECTUS', desc: 'Draft Abridged Prospectus', provision: 'Regulation 26', status: 'live', href: '/documents/offer-document/Draft Abridged Prospectus.pdf' },
   { name: 'Industry Report', provision: 'AIBI guidance, Oct 2021', status: 'live', href: '/documents/offer-document/IAL - Ship Recycling Industry_Clean Version_29092026.pdf'  },
+  { name: 'Public Announcement', provision: '', status: 'live', href: '/documents/offer-document/Rudra Green Ship Recycling Limited 21 Days Notice to Investor October 02, 2025.pdf'  },
   { name: 'Monitoring Agency Report', desc: 'Filed within 45 days of each quarter-end, post-issue', provision: 'Regulation 41', status: 'conditional', href: null },
   { name: 'Outstanding overdues to material creditors', provision: 'Sch. VI, Para 12(A)(2)(iii)', status: 'conditional', href: null },
   { name: 'Group company financial line items (top 5)', provision: 'Sch. VI, Para 13(A)', status: 'conditional', href: null },

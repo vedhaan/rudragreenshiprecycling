@@ -17,6 +17,7 @@ import {
   shareholdingPattern,
   groupCompanyFinancials,
 } from "../../data/investor-relations.js";
+import IRAv from './IRAv.astro'
 ---
 
 <div class="max-w-4xl">
@@ -130,38 +131,50 @@ import {
       }
     </div>
 
-    <div class="overflow-x-auto mb-6 bg-white border border-stone-200">
-      <table class="w-full text-sm min-w-[560px]">
-        <thead>
-          <tr class="bg-paper border-b border-stone-200">
-            <th
-              class="text-left font-mono text-[10px] text-stone-400 uppercase tracking-wide px-5 py-3"
-              >Committee</th
-            >
-            <th
-              class="text-left font-mono text-[10px] text-stone-400 uppercase tracking-wide px-5 py-3"
-              >Chairperson</th
-            >
-            <th
-              class="text-left font-mono text-[10px] text-stone-400 uppercase tracking-wide px-5 py-3"
-              >Members</th
-            >
-          </tr>
-        </thead>
-        <tbody>
-          {
-            governanceCommittees.map((c) => (
-              <tr class="border-b border-stone-100 last:border-0">
-                <td class="px-5 py-3.5 font-semibold text-navy-950">
-                  {c.name}
-                </td>
-                <td class="px-5 py-3.5 text-stone-400">{c.chair}</td>
-                <td class="px-5 py-3.5 text-stone-400">{c.members}</td>
-              </tr>
-            ))
-          }
-        </tbody>
-      </table>
+        <p class="eyebrow text-stone-400 mb-4">Board Committees</p>
+    <div class="space-y-5 mb-6">
+      {governanceCommittees.map((c) => (
+        <div class="bg-white border border-stone-200">
+          <div class="px-5 pt-5 pb-4 border-b border-stone-200">
+            <h3 class="font-display font-semibold text-lg text-navy-950">{c.name}</h3>
+            {c.note && <p class="text-stone-500 text-xs leading-relaxed mt-1.5 max-w-2xl">{c.note}</p>}
+          </div>
+
+          {c.members.length > 0 ? (
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm min-w-[480px]">
+                <thead>
+                  <tr class="bg-paper border-b border-stone-200">
+                    <th class="text-left font-mono text-[10px] text-stone-400 uppercase tracking-wide px-5 py-3">Name</th>
+                    <th class="text-left font-mono text-[10px] text-stone-400 uppercase tracking-wide px-5 py-3">Position in Committee</th>
+                    <th class="text-left font-mono text-[10px] text-stone-400 uppercase tracking-wide px-5 py-3">Designation</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {c.members.map((m) => (
+                    <tr class="border-b border-stone-100 last:border-0">
+                      <td class="px-5 py-3.5 font-semibold text-navy-950">{m.name}</td>
+                      <td class="px-5 py-3.5">
+                        {m.position === 'Chairperson' ? (
+                          <span class="eyebrow text-rust-500 bg-rust-500/10 border border-rust-500/25 px-2 py-0.5 rounded-full">Chairperson</span>
+                        ) : (
+                          <span class="text-stone-600">{m.position}</span>
+                        )}
+                      </td>
+                      <td class="px-5 py-3.5 text-stone-600">{m.designation}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ) : (
+            <div class="px-5 py-5 flex items-center gap-3">
+              <span class="text-stone-400 text-sm">Committee composition to be added</span>
+              <span class="eyebrow text-rust-500 bg-rust-500/10 border border-rust-500/25 px-2 py-0.5 rounded-full">provide</span>
+            </div>
+          )}
+        </div>
+      ))}
     </div>
 
     <div class="bg-white border border-stone-200">
@@ -361,6 +374,7 @@ import {
         through bid or offer closing, retained per SEBI's rules thereafter.
       </p>
     </div>
+    <IRAv />
     <div class="bg-white border border-stone-200">
       {offerDocs.map((d) => <DocRow {...d} />)}
     </div>
