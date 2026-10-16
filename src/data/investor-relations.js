@@ -103,7 +103,7 @@ export const policyDocs = [
   { name: 'Familiarisation Programme for Independent Directors', desc: 'Sessions attended, hours logged (annual & cumulative)', provision: 'Reg. 46(2)(i)', status: 'live', href: '/documents/policies_and_codes/8.Familiarization_Program_for_Independent_Directors. final.pdf' },
   { name: 'Internal Procedures and Conduct for Prevention', provision: 'Board-approved', status: 'live', href: '/documents/policies_and_codes/9.Internal_Procedures_and_Conduct for Prevention.pdf' },
   { name: 'Material Related Party Transaction Policy', provision: 'Reg. 46(2)(g)', status: 'live', href: '/documents/policies_and_codes/10.Material_Related_Party_Transaction.pdf' },
-  // { name: 'Materiality Policy', provision: 'Reg. 30(4)(ii) / 46(2)(u)', status: 'live', href: '/documents/policies_and_codes/11.Materiality_Policy.pdf' },
+  { name: 'Materiality Policy', provision: 'Reg. 30(4)(ii) / 46(2)(u)', status: 'live', href: '/documents/policies_and_codes/11.Materiality_Policy.pdf' },
   { name: 'Nomination and Remuneration Policy', provision: 'Companies Act, Sec. 178', status: 'live', href: '/documents/policies_and_codes/12.Nomination and Remuneration.pdf' },
   { name: 'Policy for Determination of Material Subsidiary', provision: 'Reg. 46(2)(h)', status: 'live', href: '/documents/policies_and_codes/13.Policy_for_Determination_of_Material_Subsidiary. final.pdf' },
   { name: 'Policy on Disclosure of Material Events and Information', provision: 'Reg. 30(4)(ii) / 46(2)(u)', status: 'live', href: '/documents/policies_and_codes/14. Policy_on_Disclosure of Material Events and Information. final.pdf' },
